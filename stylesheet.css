@@ -1,0 +1,194 @@
+/* Reset */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* BODY BACKGROUND IMAGE */
+body{
+    background-image: url("https://img.freepik.com/premium-photo/abstract-blurred-pastel-background-website-design-3d-digital-art-concept_1082886-2854.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* ================= NAVIGATION BAR ================= */
+
+.nav-bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:15px 50px;
+    background: rgba(255,255,255,0.9);
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Nav links */
+.nav-bar a{
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:500;
+    color:#333;
+    transition:0.3s;
+}
+
+/* Hover effect */
+.nav-bar a:hover{
+    color:#ff4081;
+}
+/* Animated Color Changing Logo */
+
+.logo-text span{
+    font-size: 26px;
+    font-weight: bold;
+    display: inline-block;
+    animation: colorChange 2s infinite;
+}
+
+/* Delay each letter */
+.logo-text span:nth-child(1){ animation-delay: 0s; }
+.logo-text span:nth-child(2){ animation-delay: 0.2s; }
+.logo-text span:nth-child(3){ animation-delay: 0.4s; }
+.logo-text span:nth-child(4){ animation-delay: 0.6s; }
+.logo-text span:nth-child(5){ animation-delay: 0.8s; }
+.logo-text span:nth-child(6){ animation-delay: 1s; }
+.logo-text span:nth-child(7){ animation-delay: 1.2s; }
+.logo-text span:nth-child(8){ animation-delay: 1.4s; }
+.logo-text span:nth-child(9){ animation-delay: 1.6s; }
+
+@keyframes colorChange{
+    0%{ color: #ff4081; }
+    25%{ color: #ff9800; }
+    50%{ color: #4caf50; }
+    75%{ color: #2196f3; }
+    100%{ color: #9c27b0; }
+}
+/* Buttons */
+.nav-bar button{
+    padding:8px 15px;
+    border:none;
+    background:#ff4081;
+    color:white;
+    border-radius:20px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.nav-bar button:hover{
+    background:#e91e63;
+}
+
+/* HappyBuds Animation */
+.nav-bar a:first-of-type{
+    font-size:22px;
+    font-weight:bold;
+    color:#ff4081;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 5px #ff4081;
+    }
+    to{
+        text-shadow:0 0 20px #ff4081;
+    }
+}
+
+/* ================= HERO SECTION ================= */
+
+.hero{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:80px 100px;
+    color:white;
+}
+
+/* Hero Text */
+.hero-text{
+    max-width:500px;
+    background: rgba(0,0,0,0.5);
+    padding:30px;
+    border-radius:20px;
+}
+
+.hero-text h2{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.hero-text p{
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+.hero-text button{
+    padding:10px 20px;
+    margin-right:10px;
+    border:none;
+    border-radius:25px;
+    background:#ff9800;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.hero-text button:hover{
+    background:#f57c00;
+}
+
+/* Hero Image Right Corner */
+.hero-img img{
+    height:350px;
+    position:absolute;
+    right:80px;
+    top:150px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    background:linear-gradient(to right,#ffb6c1,#ffe4b5,#add8e6);
+    padding:40px 20px 10px;
+    margin-top:100px;
+    color:#333;
+}
+
+.footer-container{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+}
+
+.footer h2,.footer h3{
+    margin-bottom:10px;
+}
+
+.footer-links ul{
+    list-style:none;
+}
+
+.footer-links ul li{
+    margin:6px 0;
+}
+
+.footer-links ul li a{
+    text-decoration:none;
+    color:#444;
+    transition:0.3s;
+}
+
+.footer-links ul li a:hover{
+    color:#ff4081;
+}
+
+.footer-bottom{
+    text-align:center;
+    margin-top:20px;
+    padding-top:10px;
+    border-top:1px solid white;
+    font-size:14px;
+}
