@@ -28,6 +28,7 @@ body{
     padding:15px 50px;
     background: rgba(255,255,255,0.9);
     box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    position: relative;
 }
 /* Container for right-side nav links */
 .nav-items{
@@ -87,6 +88,38 @@ body{
 
 .nav-bar button:hover{
     background:#e91e63;
+}
+
+/* ================= HAMBURGER MENU ================= */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 5px 0;
+    transition: 0.3s;
+    display: block;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
 }
 
 /* HappyBuds Animation */
@@ -200,4 +233,220 @@ body{
     padding-top:10px;
     border-top:1px solid white;
     font-size:14px;
+}
+
+/* ================= MEDIA QUERIES ================= */
+
+/* Tablets (max-width: 768px) */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-bar {
+        padding: 15px 20px;
+        flex-wrap: wrap;
+    }
+
+    .nav-items {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255,0.95);
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-items.active {
+        max-height: 400px;
+        padding: 15px 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-items a {
+        display: block;
+        margin: 10px 0;
+        font-size: 14px;
+    }
+
+    .nav-bar a {
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .logo-text span {
+        font-size: 18px;
+    }
+
+    .hero {
+        padding: 40px 30px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text {
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .hero-text h2 {
+        font-size: 28px;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+    }
+
+    .hero-img img {
+        position: relative;
+        right: auto;
+        top: auto;
+        height: 250px;
+        width: 250px;
+        max-width: 100%;
+    }
+
+    .page-content {
+        padding: 40px 20px !important;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-links,
+    .footer-contact {
+        margin-top: 20px;
+    }
+}
+
+/* Mobile phones (max-width: 480px) */
+@media (max-width: 480px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-bar {
+        padding: 10px 15px;
+    }
+
+    .nav-items {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255,0.95);
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding: 0;
+        margin: 0;
+        gap: 0;
+    }
+
+    .nav-items.active {
+        max-height: 350px;
+        padding: 10px 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-items a {
+        display: block;
+        margin: 8px 0;
+        font-size: 12px;
+    }
+
+    .nav-bar a {
+        margin: 0;
+        font-size: 12px;
+    }
+
+    .logo-text span {
+        font-size: 14px;
+    }
+
+    .hero {
+        padding: 20px 15px;
+    }
+
+    .hero-text {
+        padding: 20px;
+    }
+
+    .hero-text h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .hero-text p {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .hero-text button {
+        padding: 8px 15px;
+        font-size: 14px;
+        margin-right: 5px;
+    }
+
+    .hero-img img {
+        height: 180px;
+        width: 180px;
+    }
+
+    .page-content {
+        padding: 20px 15px !important;
+    }
+
+    .page-content h1 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .page-content p {
+        font-size: 14px;
+    }
+
+    form input,
+    form textarea {
+        width: 100% !important;
+        max-width: 100%;
+    }
+
+    form button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .footer {
+        padding: 20px 10px 5px;
+        margin-top: 40px;
+    }
+
+    .footer-container {
+        gap: 20px;
+    }
+
+    .footer h2,
+    .footer h3 {
+        font-size: 16px;
+    }
+
+    .footer p {
+        font-size: 13px;
+    }
+
+    .footer-bottom {
+        font-size: 12px;
+    }
 }

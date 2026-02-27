@@ -19,7 +19,12 @@
                 <span>u</span>
                 <span>d</span>
                 <span>s</span></a></div>
-            <nav class="nav-items">
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav-items" id="nav-items">
                 <a href="about.html">About</a>
                 <a href="program.html">Program</a>
                 <a href="galary.html">Galary</a>
@@ -73,5 +78,24 @@
         <p>© 2026 HappyBuds Kindergarten | All Rights Reserved</p>
     </div>
 </footer>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navItems = document.getElementById('nav-items');
+
+    hamburger.addEventListener('click', () => {
+        navItems.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-items a').forEach(link => {
+        link.addEventListener('click', () => {
+            navItems.classList.remove('active');
+            hamburger.classList.remove('active');
+        });
+    });
+</script>
+
 </body>
 </html>
