@@ -3,7 +3,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 /* BODY BACKGROUND IMAGE */
@@ -18,8 +18,7 @@ body{
 .logo{
     display:flex;
     align-items:center;
-    justify-content:flex-start;
-    text-align: left;
+  
 }
 .nav-bar{
     display:flex;
@@ -54,9 +53,12 @@ body{
     font-size: 26px;
     font-weight: bold;
     display: inline-block;
-    animation: colorChange 2s infinite;
+   animation: rainbowBounce 2s ease-in-out infinite;
 }
-
+.logo-text span{
+    display:inline-block;
+    animation: rainbowBounce 2s ease-in-out infinite;
+}
 /* Delay each letter */
 .logo-text span:nth-child(1){ animation-delay: 0s; }
 .logo-text span:nth-child(2){ animation-delay: 0.2s; }
@@ -68,12 +70,12 @@ body{
 .logo-text span:nth-child(8){ animation-delay: 1.4s; }
 .logo-text span:nth-child(9){ animation-delay: 1.6s; }
 
-@keyframes colorChange{
-    0%{ color: #ff4081; }
-    25%{ color: #ff9800; }
-    50%{ color: #4caf50; }
-    75%{ color: #2196f3; }
-    100%{ color: #9c27b0; }
+@keyframes rainbowBounce {
+    0%{ color:#ff4081; transform:translateY(0); }
+    25%{ color:#ff9800; transform:translateY(-6px); }
+    50%{ color:#4caf50; transform:translateY(0); }
+    75%{ color:#2196f3; transform:translateY(-6px); }
+    100%{ color:#9c27b0; transform:translateY(0); }
 }
 /* Buttons */
 .nav-bar button{
@@ -122,14 +124,6 @@ body{
     transform: rotate(-45deg) translate(7px, -7px);
 }
 
-/* HappyBuds Animation */
-.nav-bar a:first-of-type{
-    font-size:22px;
-    font-weight:bold;
-    color:#ff4081;
-    animation: glow 2s infinite alternate;
-}
-
 @keyframes glow{
     from{
         text-shadow:0 0 5px #ff4081;
@@ -146,13 +140,13 @@ body{
     align-items:center;
     justify-content:space-between;
     padding:80px 100px;
+    position: relative;
     color:white;
 }
 
 /* Hero Text */
 .hero-text{
     max-width:500px;
-    background: rgba(0,0,0,0.5);
     padding:30px;
     border-radius:20px;
 }
@@ -448,5 +442,111 @@ body{
 
     .footer-bottom {
         font-size: 12px;
+    }
+}
+/* ================= ADMISSION FORM SECTION ================= */
+.form-subtitle {
+    text-align: center;
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 25px;
+    
+    line-height: 1.6;
+}
+.admission-form {
+    max-width: 450px;
+    margin: 60px auto;
+    padding: 35px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    animation: fadeInForm 0.8s ease-in-out;
+}
+
+/* Form Heading */
+.admission-form h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #ff4081;
+    font-size: 28px;
+}
+
+/* Labels */
+.admission-form label {
+    margin-top: 12px;
+    font-weight: 600;
+    color: #444;
+    font-size: 14px;
+}
+
+/* Inputs & Select */
+.admission-form input,
+.admission-form select {
+    margin-top: 6px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+/* Focus Effect */
+.admission-form input:focus,
+.admission-form select:focus {
+    border-color: #ff4081;
+    outline: none;
+    box-shadow: 0 0 8px rgba(255,64,129,0.3);
+    transform: scale(1.02);
+}
+
+/* Button Container */
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+/* Buttons */
+.admission-form button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/* Reset Button */
+.admission-form button[type="reset"] {
+    background: #ccc;
+    color: #333;
+}
+
+.admission-form button[type="reset"]:hover {
+    background: #bbb;
+}
+
+/* Submit Button */
+.admission-form button[type="submit"] {
+    background: linear-gradient(to right, #ff4081, #ff9800);
+    color: white;
+}
+
+.admission-form button[type="submit"]:hover {
+    transform: scale(1.08);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* Smooth Fade Animation */
+@keyframes fadeInForm {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
