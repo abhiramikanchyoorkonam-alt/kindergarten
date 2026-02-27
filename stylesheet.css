@@ -8,14 +8,19 @@
 
 /* BODY BACKGROUND IMAGE */
 body{
-    background-image: url("https://img.freepik.com/premium-photo/abstract-blurred-pastel-background-website-design-3d-digital-art-concept_1082886-2854.jpg");
+    background-image: url("https://www.creativefabrica.com/wp-content/uploads/2024/03/10/Pastel-Watercolor-Texture-Background-Graphics-92979706-1.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
 /* ================= NAVIGATION BAR ================= */
-
+.logo{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    text-align: left;
+}
 .nav-bar{
     display:flex;
     align-items:center;
@@ -24,7 +29,11 @@ body{
     background: rgba(255,255,255,0.9);
     box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
-
+/* Container for right-side nav links */
+.nav-items{
+    display:flex;
+    align-items:center;
+}
 /* Nav links */
 .nav-bar a{
     text-decoration:none;
