@@ -19,7 +19,7 @@
 				<span>u</span>
 				<span>d</span>
 				<span>s</span></a></div>
-            <button class="hamburger" id="hamburger">
+            <button class="hamburger" id="hamburger" aria-controls="nav-items" aria-expanded="false" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -34,9 +34,11 @@
             </nav>
         </div>
         </header>
+
+        <main class="page-content">
         <p class="form-subtitle">
         Please fill out this short form to start the enrollment process.</p>
-		<form class="admission-form" action="#" method="post">
+        <form class="admission-form" action="#" method="post">
 
     <h2>Admission Form</h2>
 
@@ -70,6 +72,7 @@
     </div>
 
 </form>
+    </main>
 	<footer class="footer">
 		<div class="footer-container">
 			<div class="footer-about">
@@ -102,16 +105,20 @@
     const hamburger = document.getElementById('hamburger');
     const navItems = document.getElementById('nav-items');
 
-    hamburger.addEventListener('click', () => {
-        navItems.classList.toggle('active');
+    function toggleNav(){
+        const isActive = navItems.classList.toggle('active');
         hamburger.classList.toggle('active');
-    });
+        hamburger.setAttribute('aria-expanded', isActive);
+    }
+
+    hamburger.addEventListener('click', toggleNav);
 
     // Close menu when a link is clicked
     document.querySelectorAll('.nav-items a').forEach(link => {
         link.addEventListener('click', () => {
             navItems.classList.remove('active');
             hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded','false');
         });
     });
 </script>

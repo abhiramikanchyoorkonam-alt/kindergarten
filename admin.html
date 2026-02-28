@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin — HappyBuds</title>
+	<link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+	<header>
+		<div class="nav-bar">
+			 <div class="logo"> <a href="index.html" class="logo-text">
+				<span>H</span>
+				<span>a</span>
+				<span>p</span>
+				<span>p</span>
+				<span>y</span>
+				<span>B</span>
+				<span>u</span>
+				<span>d</span>
+				<span>s</span></a></div>
+			<button class="hamburger" id="hamburger" aria-controls="nav-items" aria-expanded="false" aria-label="Toggle navigation">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+			<nav class="nav-items" id="nav-items">
+				<a href="about.html">About</a>
+				<a href="program.html">Program</a>
+				<a href="galary.html">Galary</a>
+				<a href="contact.html">Contact</a>
+				<a href="application.html"><button>Enroll</button></a>
+				<a href="login.html"><button>Login</button></a>
+			</nav>
+		</div>
+	</header>
+
+	<main class="page-content">
+		<section class="hero">
+			<div class="hero-text">
+				<h2>Admin</h2>
+				<p>Administrator access and tools.</p>
+			</div>
+			<div class="hero-img">
+				<img src="log/logo home.png" alt="logo">
+			</div>
+		</section>
+	</main>
+
+	<footer class="footer">
+		<div class="footer-container">
+			<div class="footer-about">
+				<h2>HappyBuds Kindergarten 🌸</h2>
+				<p>Where Little Minds Grow Big Dreams 💛</p>
+			</div>
+			<div class="footer-links">
+				<h3>Quick Links</h3>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="about.html">About Us</a></li>
+					<li><a href="program.html">Programs</a></li>
+					<li><a href="galary.html">Gallery</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</div>
+			<div class="footer-contact">
+				<h3>Contact Us</h3>
+				<p>📍 Kattakkada, Kerala</p>
+				<p>📞 +91 98765 43210</p>
+				<p>📧 happybuds@gmail.com</p>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<p>© 2026 HappyBuds Kindergarten | All Rights Reserved</p>
+		</div>
+	</footer>
+
+	<script>
+		const hamburger = document.getElementById('hamburger');
+		const navItems = document.getElementById('nav-items');
+
+		function toggleNav(){
+			const isActive = navItems.classList.toggle('active');
+			hamburger.classList.toggle('active');
+			hamburger.setAttribute('aria-expanded', isActive);
+		}
+
+		hamburger.addEventListener('click', toggleNav);
+
+		document.querySelectorAll('.nav-items a').forEach(link => {
+			link.addEventListener('click', () => {
+				navItems.classList.remove('active');
+				hamburger.classList.remove('active');
+				hamburger.setAttribute('aria-expanded','false');
+			});
+		});
+	</script>
+</body>
+</html>

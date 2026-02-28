@@ -64,15 +64,13 @@
         </div>
     </div>
 </section>
-   <!-- Program Details Popup -->
-<div id="programDetails" class="program-details">
     <span class="close-btn" onclick="closeProgram()">✖</span>
+    <div id="programDetails" class="program-details">
     <h3 id="detailTitle"></h3>
     <p id="detailTeacher"></p>
     <p id="detailQualification"></p>
     <p id="detailExperience"></p>
     <p id="detailActivities"></p>
-</div>
 </div>
 
         <section class="teachers-section">
@@ -187,7 +185,7 @@
             hamburger.classList.remove('active');
         });
     });
-function showProgram(type) {
+    function showProgram(type) {
 
     const programs = {
         play: {
@@ -232,6 +230,7 @@ function showProgram(type) {
 function closeProgram() {
     document.getElementById("programDetails").style.display = "none";
 }
+
 </script>
 </body>
 </html>

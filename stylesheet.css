@@ -14,6 +14,36 @@ body{
     background-attachment: fixed;
 }
 
+/* Reduce heavy background and animations on small screens */
+@media (max-width: 768px) {
+    body{
+        background-attachment: scroll;
+    }
+}
+
+/* Ensure images are responsive */
+img{
+    max-width:100%;
+    height:auto;
+    display:block;
+}
+
+/* Accessibility: focus styles for keyboard users */
+.hamburger:focus{outline:3px solid rgba(255,64,129,0.25);outline-offset:3px}
+.nav-bar a:focus, .nav-items a:focus, .nav-bar button:focus{outline:2px dashed rgba(33,150,243,0.5);outline-offset:3px}
+
+/* Make nav items easier to tap on small screens */
+@media (max-width: 768px){
+    .nav-items a{padding:10px 0}
+    .nav-items a, .nav-items button{width:100%;display:block;text-align:left}
+}
+
+/* Respect user's reduced motion preference */
+@media (prefers-reduced-motion: reduce){
+    .logo-text span{animation:none}
+    *{transition:none!important}
+}
+
 /* ================= NAVIGATION BAR ================= */
 .logo{
     display:flex;
@@ -28,6 +58,13 @@ body{
     background: rgba(255,255,255,0.9);
     box-shadow:0 4px 10px rgba(0,0,0,0.1);
     position: relative;
+}
+/* keep nav above content when expanded on small screens */
+.nav-bar{z-index:1000}
+
+/* Slightly smaller nav padding on very small screens */
+@media (max-width:380px){
+    .nav-bar{padding:10px 12px}
 }
 /* Container for right-side nav links */
 .nav-items{
@@ -104,16 +141,16 @@ body{
 }
 
 .hamburger span {
-    width: 25px;
-    height: 3px;
+    width: 18px;
+    height: 2px;
     background: #333;
-    margin: 5px 0;
+    margin: 4px 0;
     transition: 0.3s;
     display: block;
 }
 
 .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
+    transform: rotate(45deg) translate(6px, 6px);
 }
 
 .hamburger.active span:nth-child(2) {
@@ -121,7 +158,7 @@ body{
 }
 
 .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 @keyframes glow{
@@ -243,10 +280,7 @@ body{
     }
 
     .nav-items {
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
+        position: relative;
         background: rgba(255,255,255,0.95);
         flex-direction: column;
         width: 100%;
@@ -333,10 +367,7 @@ body{
     }
 
     .nav-items {
-        position: absolute;
-        top: 50px;
-        left: 0;
-        right: 0;
+        position: relative;
         background: rgba(255,255,255,0.95);
         flex-direction: column;
         width: 100%;

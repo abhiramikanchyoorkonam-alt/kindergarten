@@ -19,14 +19,25 @@
 				<span>u</span>
 				<span>d</span>
 				<span>s</span></a></div>
-            <button class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+			<button class="hamburger" id="hamburger" aria-controls="nav-items" aria-expanded="false" aria-label="Toggle navigation">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
             <nav class="nav-items" id="nav-items">
-		<p>Welcome to HappyBuds Kindergarten — a safe, fun, and loving place for early learning. We focus on play-based learning, creativity, and social development.</p>
-	</main>
+				<a href="about.html">About</a>
+                <a href="program.html">Program</a>
+                <a href="galary.html">Galary</a>
+                <a href="contact.html">Contact</a>
+                <a href="application.html"><button>Enroll</button></a>
+                <a href="login.html"><button>Login</button></a>
+            </nav>
+        </div>
+		</header>
+
+		<main class="page-content">
+			<p>Welcome to HappyBuds Kindergarten — a safe, fun, and loving place for early learning. We focus on play-based learning, creativity, and social development.</p>
+		</main>
 
 	<footer class="footer">
 		<div class="footer-container">
@@ -57,20 +68,25 @@
 	</footer>
 
 <script>
-    const hamburger = document.getElementById('hamburger');
-    const navItems = document.getElementById('nav-items');
+	const hamburger = document.getElementById('hamburger');
+	const navItems = document.getElementById('nav-items');
 
-    hamburger.addEventListener('click', () => {
-        navItems.classList.toggle('active');
-        hamburger.classList.toggle('active');
-    });
+	function toggleNav(){
+		const isActive = navItems.classList.toggle('active');
+		hamburger.classList.toggle('active');
+		hamburger.setAttribute('aria-expanded', isActive);
+	}
 
-    // Close menu when a link is clicked
-    document.querySelectorAll('.nav-items a').forEach(link => {
-        link.addEventListener('click', () => {
-            navItems.classList.remove('active');
-            hamburger.classList.remove('active');
-        });
-    });
+	hamburger.addEventListener('click', toggleNav);
+
+	// Close menu when a link is clicked
+	document.querySelectorAll('.nav-items a').forEach(link => {
+		link.addEventListener('click', () => {
+			navItems.classList.remove('active');
+			hamburger.classList.remove('active');
+			hamburger.setAttribute('aria-expanded', 'false');
+		});
+	});
 </script>
-
+</body>
+</html>
