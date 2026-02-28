@@ -33,7 +33,47 @@
                 <a href="login.html"><button>Login</button></a>
             </nav>
         </div>
-		<p>We offer a variety of early learning programs: play-based preschool, art & craft, music & movement, outdoor play, and story time.</p>
+    </header>
+        <section class="program-section">
+    <h2 class="program-title">Our Programs 🎓</h2>
+            <p>We offer a variety of early learning programs: play-based preschool, art & craft, music & movement, outdoor play, and story time.</p>
+    <div class="program-container">
+
+        <div class="program-card">
+            <h3>Play Group</h3>
+            <p>Age 2–3 Years</p>
+            <button onclick="showProgram('play')">View Details</button>
+        </div>
+
+        <div class="program-card">
+            <h3>Nursery</h3>
+            <p>Age 3–4 Years</p>
+             <button onclick="showProgram('nursery')">View Details</button>
+        </div>
+
+        <div class="program-card" >
+            <h3>LKG</h3>
+            <p>Age 4–5 Years</p>
+             <button onclick="showProgram('lkg')">View Details</button>
+        </div>
+
+        <div class="program-card">
+            <h3>UKG</h3>
+            <p>Age 5–6 Years</p>
+             <button onclick="showProgram('ukg')">View Details</button>
+        </div>
+    </div>
+</section>
+   <!-- Program Details Popup -->
+<div id="programDetails" class="program-details">
+    <span class="close-btn" onclick="closeProgram()">✖</span>
+    <h3 id="detailTitle"></h3>
+    <p id="detailTeacher"></p>
+    <p id="detailQualification"></p>
+    <p id="detailExperience"></p>
+    <p id="detailActivities"></p>
+</div>
+</div>
 
         <section class="teachers-section">
 
@@ -76,6 +116,11 @@
             <p>Senior Teacher – UKG</p>
         </div>
 
+         <div class="teacher-card">
+            <img src="https://static.vecteezy.com/system/resources/previews/046/654/179/non_2x/indian-female-teacher-wearing-a-saree-standing-in-front-of-students-smiling-with-her-arms-crossed-photo.jpeg">
+            <h3>Ms. Priya</h3>
+            <p>LKG Teacher</p>
+        </div>
         <div class="teacher-card">
             <img src="https://img.freepik.com/premium-photo/indian-teachers-indian-students-indian-teachers-day_978786-47048.jpg?w=2000">
             <h3>Ms. Kavita Rao</h3>
@@ -96,10 +141,7 @@
         </div>
 
     </div>
-
 </section>
-
-
 </section>
 	<footer class="footer">
 		<div class="footer-container">
@@ -145,5 +187,51 @@
             hamburger.classList.remove('active');
         });
     });
-</script>
+function showProgram(type) {
 
+    const programs = {
+        play: {
+            title: "Play Group (2–3 Years)",
+            teacher: "Class Teacher: Ms. Kavita Rao",
+            qualification: "🎓 Diploma in Early Childhood Care",
+            experience: "📅 5+ Years Experience",
+            activities: "🎨 Activities: Rhymes, Sensory Play, Free Play"
+        },
+        nursery: {
+            title: "Nursery (3–4 Years)",
+            teacher: "Class Teacher: Ms. Anjali Sharma",
+            qualification: "🎓 B.Ed in Early Education",
+            experience: "📅 8+ Years Experience",
+            activities: "📚 Activities: Alphabet Learning, Story Time, Craft"
+        },
+        lkg: {
+            title: "LKG (4–5 Years)",
+            teacher: "Class Teacher: Ms. Priya",
+            qualification: "🎓 M.Ed Child Development",
+            experience: "📅 6+ Years Experience",
+            activities: "✏ Activities: Writing Practice, Phonics, Drawing"
+        },
+        ukg: {
+            title: "UKG (5–6 Years)",
+            teacher: "Class Teacher: Mr. Siva Deth",
+            qualification: "🎓 B.Ed Primary Education",
+            experience: "📅 7+ Years Experience",
+            activities: "📖 Activities: Reading, Basic Maths, Projects"
+        }
+    };
+
+    document.getElementById("detailTitle").innerText = programs[type].title;
+    document.getElementById("detailTeacher").innerText = programs[type].teacher;
+    document.getElementById("detailQualification").innerText = programs[type].qualification;
+    document.getElementById("detailExperience").innerText = programs[type].experience;
+    document.getElementById("detailActivities").innerText = programs[type].activities;
+
+    document.getElementById("programDetails").style.display = "block";
+}
+
+function closeProgram() {
+    document.getElementById("programDetails").style.display = "none";
+}
+</script>
+</body>
+</html>
