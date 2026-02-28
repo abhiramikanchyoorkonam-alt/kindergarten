@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Gallery — HappyBuds</title>
 	<link rel="stylesheet" href="stylesheet.css">
+	<script src="javascript.js"></script>
 </head>
 <body>
 	<header>
@@ -25,8 +26,56 @@
 				<span></span>
 			</button>
             <nav class="nav-items" id="nav-items">
-		<p>Photos from our classrooms, events, and daily activities will appear here. (Placeholder)</p>
-	</main>
+                <a href="about.html">About</a>
+                <a href="program.html">Program</a>
+                <a href="galary.html">Galary</a>
+                <a href="contact.html">Contact</a>
+                <a href="application.html"><button>Enroll</button></a>
+                <a href="login.html"><button>Login</button></a>
+            </nav>
+        </div>
+    </header>
+	<section class="gallery-hero">
+    <h1>Our Gallery</h1>
+    <p>Explore our beautiful memories</p>
+</section>
+
+
+<section class="gallery-cards">
+
+    <div class="category-card" onclick="openGallery('arts')">
+        <h3>Arts & Craft</h3>
+    </div>
+
+    <div class="category-card" onclick="openGallery('celebrations')">
+        <h3>Celebrations</h3>
+    </div>
+
+    <div class="category-card" onclick="openGallery('classrooms')">
+        <h3>Happy Classrooms</h3>
+    </div>
+
+    <div class="category-card" onclick="openGallery('dance')">
+        <h3>Dance & Music</h3>
+    </div>
+
+    <div class="category-card" onclick="openGallery('outdoor')">
+        <h3>Outdoor Play</h3>
+    </div>
+
+    <div class="category-card" onclick="openGallery('story')">
+        <h3>Story Time</h3>
+    </div>
+
+</section>
+<div id="galleryModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeGallery()">×</span>
+    <h2 id="galleryTitle"></h2>
+    <div id="modalImages" class="modal-images"></div>
+  </div>
+</div>
+<!-- POPUP WINDOW -->
 
 	<footer class="footer">
 		<div class="footer-container">
@@ -76,5 +125,16 @@
 			hamburger.setAttribute('aria-expanded','false');
 		});
 	});
-</script>
+	function closeGallery() {
+    document.getElementById("galleryModal").style.display = "none";
+}
+const modal = document.getElementById("galleryModal");
 
+window.onclick = function(event) {
+  if (event.target === modal) {
+    closeGallery();
+  }
+}
+</script>
+</body>
+</html>
