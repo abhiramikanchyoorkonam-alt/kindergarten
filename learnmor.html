@@ -34,19 +34,66 @@
 			</nav>
 		</div>
 	</header>
+    <section class="learn-hero">
+    <h1>Learn More About HappyBuds</h1>
+    <p>Discover our programs, values, and joyful learning environment.</p>
+</section>
 
-	<main class="page-content">
-		<section class="hero">
-			<div class="hero-text">
-				<h2>Learn More</h2>
-				<p>Find out more about our curriculum and approach.</p>
-			</div>
-			<div class="hero-img">
-				<img src="log/logo home.png" alt="logo">
-			</div>
-		</section>
-	</main>
+<section class="learn-content">
 
+    <div class="learn-card">
+        <h2>Our Teaching Approach</h2>
+        <p>
+            We focus on play-based learning, creativity, and hands-on activities 
+            that help children develop confidence and curiosity.
+        </p>
+    </div>
+
+    <div class="learn-card">
+        <h2>Safe & Secure Campus</h2>
+        <p>
+            Our campus is fully secured and designed to provide a safe and 
+            nurturing environment for every child.
+        </p>
+    </div>
+
+    <div class="learn-card">
+        <h2>Qualified Teachers</h2>
+        <p>
+            Our trained educators are passionate about early childhood 
+            development and individual attention.
+        </p>
+    </div>
+</section>
+	<section class="learn-sections">
+
+    <div class="learn-main-card" onclick="openInfo('admission')">
+        <h3>Admission Process</h3>
+    </div>
+
+    <div class="learn-main-card" onclick="openInfo('documents')">
+        <h3>Documents Required</h3>
+    </div>
+
+    <div class="learn-main-card" onclick="openInfo('fees')">
+        <h3>Fee Structure</h3>
+    </div>
+
+    <div class="learn-main-card" onclick="openInfo('parent')">
+        <h3>Parent Interface</h3>
+    </div>
+
+    <div class="learn-main-card" onclick="openInfo('login')">
+        <h3>Login Information</h3>
+    </div>
+</div>
+</section>
+<div id="infoModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeInfo()">×</span>
+        <h2 id="infoTitle"></h2>
+        <div id="infoContent"></div>
+    </div>
 	<footer class="footer">
 		<div class="footer-container">
 			<div class="footer-about">
@@ -94,6 +141,96 @@
 				hamburger.setAttribute('aria-expanded','false');
 			});
 		});
+        function openInfo(section) {
+
+    const modal = document.getElementById("infoModal");
+    const title = document.getElementById("infoTitle");
+    const content = document.getElementById("infoContent");
+
+    let text = "";
+
+    if (section === "admission") {
+        title.innerText = "Admission Process";
+        text = `
+            <p>1. Fill out the online application form.</p>
+            <p>2. Submit required documents.</p>
+            <p>3. Attend interaction session.</p>
+            <p>4. Confirm admission by paying registration fee.</p>
+        `;
+    }
+
+    if (section === "documents") {
+        title.innerText = "Documents Required";
+
+        text = `
+            <h4>Nursery:</h4>
+            <p>- Birth Certificate</p>
+            <p>- 2 Passport Size Photos</p>
+
+            <h4>LKG:</h4>
+            <p>- Previous School Report (if applicable)</p>
+            <p>- Aadhaar Copy</p>
+
+            <h4>UKG:</h4>
+            <p>- Transfer Certificate</p>
+            <p>- Medical Certificate</p>
+        `;
+    }
+
+    if (section === "fees") {
+        title.innerText = "Fee Structure";
+
+        text = `
+            <h4>Nursery</h4>
+            <p>Admission Fee: ₹10,000</p>
+            <p>Monthly Fee: ₹3,000</p>
+
+            <h4>LKG</h4>
+            <p>Admission Fee: ₹12,000</p>
+            <p>Monthly Fee: ₹3,500</p>
+
+            <h4>UKG</h4>
+            <p>Admission Fee: ₹15,000</p>
+            <p>Monthly Fee: ₹4,000</p>
+        `;
+    }
+
+    if (section === "parent") {
+        title.innerText = "Parent Interface";
+
+        text = `
+            <p>Parents can:</p>
+            <p>- View attendance records</p>
+            <p>- Track homework</p>
+            <p>- Receive school announcements</p>
+            <p>- Communicate with teachers</p>
+        `;
+    }
+
+    if (section === "login") {
+        title.innerText = "Login Information";
+
+        text = `
+            <p>Each parent receives a unique login ID and password.</p>
+            <p>Use the Login page to access the parent dashboard.</p>
+            <p>If you forget your password, use the 'Forgot Password' option.</p>
+        `;
+    }
+
+    content.innerHTML = text;
+    modal.style.display = "block";
+}
+
+function closeInfo() {
+    document.getElementById("infoModal").style.display = "none";
+}
+const modal = document.getElementById("infoModal");
+
+window.onclick = function(event) {
+    if (event.target === modal) {
+        closeInfo();
+    }
+}
 	</script>
 </body>
 </html>
