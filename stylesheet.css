@@ -1058,14 +1058,32 @@ body {
 /* RESPONSIVE DESIGN */
 @media (max-width: 900px) {
     .story-container,
-    .principal-container,
-    .mission-vision {
+    .principal-container {
         flex-direction: column;
         text-align: center;
     }
 
     .why-container {
         grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 768px) {
+
+    .mission-vision {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+
+    .mv-card {
+        width: 100%;
+    }
+
+    .mv-card h3 {
+        font-size: 20px;
+    }
+
+    .mv-card p {
+        font-size: 15px;
     }
 }
 /* HERO */
