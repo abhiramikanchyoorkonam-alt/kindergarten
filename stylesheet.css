@@ -912,3 +912,159 @@ img{
 .teacher-btn:hover {
     transform: scale(1.08);
 }
+/* GLOBAL */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f9fc;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* HERO SECTION */
+.about-hero {
+    text-align: center;
+    padding: 80px 20px;
+    
+}
+
+.about-hero h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    color: rgb(25, 117, 246);
+}
+
+.about-hero p {
+    font-size: 18px;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* OUR STORY */
+.about-story {
+    padding: 70px 20px;
+}
+
+.story-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.story-image img {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.story-text h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #357abd;
+}
+
+/* MISSION & VISION */
+.mission-vision {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 20px;
+}
+
+.mv-card {
+    background: rgb(223, 237, 247);
+    padding: 35px;
+    width: 320px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.mv-card:hover {
+    transform: translateY(-8px);
+}
+
+/* WHY CHOOSE US */
+.why-us {
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.why-us h2 {
+    font-size: 28px;
+    margin-bottom: 40px;
+    color: #357abd;
+}
+
+.why-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.why-card {
+    background: rgb(219, 232, 226);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+.why-card:hover {
+    transform: scale(1.05);
+}
+
+/* PRINCIPAL SECTION */
+.principal {
+    padding: 70px 20px;
+   
+}
+
+.principal-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.principal-image img {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.principal-text h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #357abd;
+}
+
+.principal-text h4 {
+    margin-top: 20px;
+    color: #444;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 900px) {
+    .story-container,
+    .principal-container,
+    .mission-vision {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .why-container {
+        grid-template-columns: 1fr;
+    }
+}
