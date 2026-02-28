@@ -576,12 +576,6 @@ body{
     line-height: 1.6;
 }
 
-/* Image */
-.contact-image img {
-    width: 200px;
-    margin-bottom: 30px;
-}
-
 /* Second Heading */
 .contact-form-title {
     font-size: 24px;
