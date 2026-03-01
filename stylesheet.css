@@ -221,6 +221,13 @@ img{
     right:80px;
     top:150px;
 }
+.program-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 10px 0;
+    object-fit: cover;
+}
 
 /* ================= FOOTER ================= */
 
@@ -499,7 +506,7 @@ img{
 .admission-form h2 {
     text-align: center;
     margin-bottom: 25px;
-    color: #1565C0;
+    color: #fc4a19;
     font-size: 28px;
 }
 .admission-form input[type="date"] {
