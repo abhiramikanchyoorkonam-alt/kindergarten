@@ -122,6 +122,17 @@
 			hamburger.setAttribute('aria-expanded','false');
 		});
 	});
+	const loginBtn = document.querySelector('.login-btn-nav');
+const dropdown = document.querySelector('.dropdown-content');
+
+loginBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    dropdown.classList.toggle('show');
+});
+
+window.addEventListener('click', function() {
+    dropdown.classList.remove('show');
+});
 </script>
 </body>
 </html>

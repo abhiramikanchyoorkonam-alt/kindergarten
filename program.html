@@ -30,7 +30,13 @@
                 <a href="galary.html">Galary</a>
                 <a href="contact.html">Contact</a>
                 <a href="application.html"><button>Enroll</button></a>
-                <a href="login.html"><button>Login</button></a>
+                <div class="login-dropdown">
+                <button class="login-btn-nav">Login ▾</button>
+                <div class="dropdown-content">
+                <a href="admin-login.html">Admin Login</a>
+                <a href="prnt_login.html">Parent Login</a>
+                </div>
+                </div>
             </nav>
         </div>
     </header>
@@ -230,6 +236,17 @@
 function closeProgram() {
     document.getElementById("programDetails").style.display = "none";
 }
+const loginBtn = document.querySelector('.login-btn-nav');
+const dropdown = document.querySelector('.dropdown-content');
+
+loginBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    dropdown.classList.toggle('show');
+});
+
+window.addEventListener('click', function() {
+    dropdown.classList.remove('show');
+});
 </script>
 </body>
 </html>
