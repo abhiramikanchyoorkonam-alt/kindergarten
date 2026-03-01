@@ -1545,3 +1545,120 @@ body {
         font-size: 14px;
     }
 }
+/*-------index------*/
+.quick-adm {
+    
+    color: rgb(39, 22, 230);
+    text-align: center;
+    padding: 60px 20px;
+    border-radius: 20px;
+    margin: 60px 20px;
+}
+
+.quick-adm h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.quick-adm p {
+    font-size: 16px;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+.quick-adm-button {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.quick-adm-button button {
+    padding: 12px 25px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.quick-adm-button a:first-child button {
+    background-color: #ff6b81;
+    color: white;
+}
+
+.quick-adm-button a:last-child button {
+    background-color: white;
+    color: #4a69bd;
+}
+
+.quick-adm-button button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+@media (max-width: 768px) {
+    .quick-adm {
+        padding: 40px 15px;
+    }
+
+    .quick-adm h2 {
+        font-size: 22px;
+    }
+
+    .quick-adm-button {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .quick-adm-button button {
+        width: 100%;
+    }
+}
+.values-section {
+    padding: 70px 20px;
+    text-align: center;
+    
+}
+
+.values-title {
+    font-size: 28px;
+    margin-bottom: 40px;
+    color: #0f5eb8;
+}
+
+.values-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.value-card {
+    background: rgb(254, 229, 229);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+.value-card h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.value-card p {
+    font-size: 14px;
+    color: #555;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+@media (max-width: 768px) {
+    .values-container {
+        grid-template-columns: 1fr;
+    }
+
+    .values-title {
+        font-size: 22px;
+    }
+}
