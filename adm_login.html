@@ -30,7 +30,13 @@
                 <a href="galary.html">Galary</a>
                 <a href="contact.html">Contact</a>
                 <a href="application.html"><button>Enroll</button></a>
-                <a href="login.html"><button>Login</button></a>
+                 <div class="login-dropdown">
+                <button class="login-btn-nav">Login ▾</button>
+                <div class="dropdown-content">
+                <a href="adm_login.html">Admin Login</a>
+                <a href="prnt_login.html">Parent Login</a>
+                </div>
+                </div>
             </nav>
         </div>
     </header>
@@ -47,8 +53,8 @@
 <section class="login-section">
     <div class="login-container">
 
-        <h2>Parent Login</h2>
-        <p>Access your child’s dashboard</p>
+        <h2>Admin Login</h2>
+        <p>Access to the dashboard</p>
 
         <form>
             <div class="input-group">
@@ -133,6 +139,7 @@ loginBtn.addEventListener('click', function(e) {
 window.addEventListener('click', function() {
     dropdown.classList.remove('show');
 });
+
 </script>
 </body>
 </html>
