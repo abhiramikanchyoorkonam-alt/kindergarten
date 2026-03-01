@@ -46,6 +46,40 @@
         </div>
     </div>
 
+        <section class="program-section">
+    <h2 class="program-title">Our Programs 🎓</h2>
+    <div class="program-container">
+
+        <div class="program-card">
+            <h3>Play Group</h3>
+            <p>Age 2–3 Years</p>
+            <button onclick="showProgram('play')">View Details</button>
+        </div>
+
+        <div class="program-card">
+            <h3>Nursery</h3>
+            <p>Age 3–4 Years</p>
+             <button onclick="showProgram('nursery')">View Details</button>
+        </div>
+
+        <div class="program-card" >
+            <h3>LKG</h3>
+            <p>Age 4–5 Years</p>
+             <button onclick="showProgram('lkg')">View Details</button>
+        </div>
+
+        <div class="program-card">
+            <h3>UKG</h3>
+            <p>Age 5–6 Years</p>
+             <button onclick="showProgram('ukg')">View Details</button>
+        </div>
+    </div>
+</section>
+
+    <div id="programDetails" class="program-details">
+        <span class="close-btn" onclick="closeProgram()">✖</span>
+     <div id="programContent"></div>
+</div>
     <footer class="footer">
     <div class="footer-container">
 
@@ -99,6 +133,46 @@
             hamburger.setAttribute('aria-expanded', 'false');
         });
     });
+    function showProgram(type) {
+
+    const programs = {
+
+        play: `
+            <h3>Play Group (2–3 Years)</h3>
+            <p><strong>Focus:</strong> Social interaction, motor skills, sensory play.</p>
+            <p><strong>Activities:</strong> Rhymes, storytelling, art & craft, outdoor play.</p>
+            <p><strong>Timing:</strong> Monday–Friday | 9:30 AM – 12:00 PM</p>
+        `,
+
+        nursery: `
+            <h3>Nursery (3–4 Years)</h3>
+            <p><strong>Focus:</strong> Alphabet basics, number learning, communication skills.</p>
+            <p><strong>Activities:</strong> Story time, drawing, music, fun worksheets.</p>
+            <p><strong>Timing:</strong> Monday–Friday | 9:00 AM – 12:30 PM</p>
+        `,
+
+        lkg: `
+            <h3>LKG (4–5 Years)</h3>
+            <p><strong>Focus:</strong> Reading readiness, phonics, basic writing.</p>
+            <p><strong>Activities:</strong> Writing practice, creative art, group learning.</p>
+            <p><strong>Timing:</strong> Monday–Friday | 9:00 AM – 1:00 PM</p>
+        `,
+
+        ukg: `
+            <h3>UKG (5–6 Years)</h3>
+            <p><strong>Focus:</strong> Advanced phonics, math basics, school readiness.</p>
+            <p><strong>Activities:</strong> Reading, basic maths, project activities.</p>
+            <p><strong>Timing:</strong> Monday–Friday | 9:00 AM – 1:30 PM</p>
+        `
+    };
+
+    document.getElementById("programContent").innerHTML = programs[type];
+    document.getElementById("programDetails").style.display = "block";
+}
+
+function closeProgram() {
+    document.getElementById("programDetails").style.display = "none";
+}
     </script>
 
 </body>
