@@ -1417,7 +1417,27 @@ body {
 /* =========================
    CLOSE BUTTON
 ========================= */
+.learn-main-card button {
+    margin-top: 12px;
+    padding: 8px 18px;
+    background-color: #ff6b81;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
+.learn-main-card button:hover {
+    background-color: #ff4757;
+    transform: translateY(-2px);
+}
+
+.learn-main-card button:active {
+    transform: scale(0.96);
+}
 .close-btn {
     position: absolute;
     top: 15px;
