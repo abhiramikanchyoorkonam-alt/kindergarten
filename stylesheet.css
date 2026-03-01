@@ -1662,3 +1662,121 @@ body {
         font-size: 22px;
     }
 }
+/*-----login----*/
+.login-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 5px;
+}
+
+.login-container p {
+    margin-bottom: 25px;
+    color: #666;
+    font-size: 14px;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #4a69bd;
+}
+
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.login-options a {
+    text-decoration: none;
+    color: #4a69bd;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: #ff6b81;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background: #ff4757;
+    transform: translateY(-2px);
+}
+@media (max-width: 768px) {
+
+    .login-section {
+        padding: 15px;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .login-container {
+        padding: 25px;
+        border-radius: 15px;
+    }
+
+    .login-container h2 {
+        font-size: 22px;
+    }
+
+    .login-container p {
+        font-size: 13px;
+    }
+
+    .input-group input {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .login-btn {
+        padding: 14px;
+        font-size: 15px;
+    }
+
+    .login-options {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+    }
+}

@@ -34,14 +34,45 @@
             </nav>
         </div>
     </header>
-	
-		<form action="#" method="post" style="margin-top:20px;">
-			<label>Email</label><br>
-			<input type="email" name="email" style="padding:8px;width:300px;"><br><br>
-			<label>Password</label><br>
-			<input type="password" name="password" style="padding:8px;width:300px;"><br><br>
-			<button type="submit">Login</button>
-		</form>
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - HappyBuds</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+
+<section class="login-section">
+    <div class="login-container">
+
+        <h2>Parent Login</h2>
+        <p>Access your child’s dashboard</p>
+
+        <form>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" placeholder="Enter your password" required>
+            </div>
+
+            <div class="login-options">
+                <label>
+                    <input type="checkbox"> Remember Me
+                </label>
+                <a href="#">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+
+    </div>
+</section>
 
 	<footer class="footer">
 		<div class="footer-container">
@@ -92,4 +123,6 @@
 		});
 	});
 </script>
+</body>
+</html>
 
