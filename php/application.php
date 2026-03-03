@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "happybuds_db";
+$dbname = "happybuds";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
@@ -77,7 +77,7 @@ $conn->close();
         <main class="page-content">
         <p class="form-subtitle">
         Please fill out this short form to start the enrollment process.</p>
-    <form class="admission-form" action="submit_admission.php" method="post">
+    <form class="admission-form" action="" method="post">
 
     <h2>Admission Form</h2>
 
