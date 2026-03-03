@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Arts & Craft — HappyBuds</title>
+	<title>Contact — HappyBuds</title>
 	<link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
@@ -24,35 +24,48 @@
 				<span></span>
 				<span></span>
 			</button>
-			<nav class="nav-items" id="nav-items">
-				<a href="about.html">About</a>
-				<a href="program.html">Program</a>
-				<a href="galary.html">Galary</a>
-				<a href="contact.html">Contact</a>
-				<a href="application.html"><button>Enroll</button></a>
-				<div class="login-dropdown">
+            <nav class="nav-items" id="nav-items">
+                <a href="about.html">About</a>
+                <a href="program.html">Program</a>
+                <a href="galary.html">Galary</a>
+                <a href="contact.html">Contact</a>
+                <a href="application.html"><button>Enroll</button></a>
+                <div class="login-dropdown">
                 <button class="login-btn-nav">Login ▾</button>
                 <div class="dropdown-content">
                 <a href="adm_login.html">Admin Login</a>
                 <a href="prnt_login.html">Parent Login</a>
                 </div>
                 </div>
-			</nav>
-		</div>
-	</header>
-    
-	<main class="page-content">
-		<section class="hero">
-			<div class="hero-text">
-				<h2>Arts & Craft</h2>
-				<p>Creative activities to inspire young learners.</p>
-			</div>
-			<div class="hero-img">
-				<img src="log/logo home.png" alt="logo">
-			</div>
-		</section>
-	</main>
+            </nav>
+        </div>
+		</header>
+        <main class="contact-main">
+            <section class="contact-section">
+    <h2 class="contact-main-title">Get in Touch with Us 😊</h2>
+    <p class="contact-main-subtitle">
+        We'd love to hear from you! Drop us a message or get in touch using the information below.
+    </p>
+  
+    <h3 class="contact-form-title">Send us a Message</h3>
 
+    <form class="contact-form">
+
+        <label for="name">Your Name</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required>
+
+        <label for="message">Your Message</label>
+        <textarea id="message" rows="4" required></textarea>
+
+        <button type="submit">Send Message</button>
+
+    </form>
+
+</section>
+        </main>
 	<footer class="footer">
 		<div class="footer-container">
 			<div class="footer-about">
@@ -82,25 +95,26 @@
 	</footer>
 
 	<script>
-		const hamburger = document.getElementById('hamburger');
-		const navItems = document.getElementById('nav-items');
+	const hamburger = document.getElementById('hamburger');
+	const navItems = document.getElementById('nav-items');
 
-		function toggleNav(){
-			const isActive = navItems.classList.toggle('active');
-			hamburger.classList.toggle('active');
-			hamburger.setAttribute('aria-expanded', isActive);
-		}
+	function toggleNav(){
+		const isActive = navItems.classList.toggle('active');
+		hamburger.classList.toggle('active');
+		hamburger.setAttribute('aria-expanded', isActive);
+	}
 
-		hamburger.addEventListener('click', toggleNav);
+	hamburger.addEventListener('click', toggleNav);
 
-		document.querySelectorAll('.nav-items a').forEach(link => {
-			link.addEventListener('click', () => {
-				navItems.classList.remove('active');
-				hamburger.classList.remove('active');
-				hamburger.setAttribute('aria-expanded','false');
-			});
+	// Close menu when a link is clicked
+	document.querySelectorAll('.nav-items a').forEach(link => {
+		link.addEventListener('click', () => {
+			navItems.classList.remove('active');
+			hamburger.classList.remove('active');
+			hamburger.setAttribute('aria-expanded','false');
 		});
-		const loginBtn = document.querySelector('.login-btn-nav');
+	});
+	const loginBtn = document.querySelector('.login-btn-nav');
 const dropdown = document.querySelector('.dropdown-content');
 
 loginBtn.addEventListener('click', function(e) {
@@ -111,6 +125,7 @@ loginBtn.addEventListener('click', function(e) {
 window.addEventListener('click', function() {
     dropdown.classList.remove('show');
 });
-	</script>
+</script>
 </body>
 </html>
+

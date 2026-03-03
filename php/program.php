@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Programs — HappyBuds</title>
+	<link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+	<header>
+		<div class="nav-bar">
+			 <div class="logo"> <a href="index.html" class="logo-text">
+				<span>H</span>
+				<span>a</span>
+				<span>p</span>
+				<span>p</span>
+				<span>y</span>
+				<span>B</span>
+				<span>u</span>
+				<span>d</span>
+				<span>s</span></a></div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav-items" id="nav-items">
+                 <a href="about.html">About</a>
+                <a href="program.html">Program</a>
+                <a href="galary.html">Galary</a>
+                <a href="contact.html">Contact</a>
+                <a href="application.html"><button>Enroll</button></a>
+                <div class="login-dropdown">
+                <button class="login-btn-nav">Login ▾</button>
+                <div class="dropdown-content">
+                <a href="adm_login.html">Admin Login</a>
+                <a href="prnt_login.html">Parent Login</a>
+                </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+        <section class="program-section">
+    <h2 class="program-title">Our Programs 🎓</h2>
+            <p>We offer a variety of early learning programs: play-based preschool, art & craft, music & movement, outdoor play, and story time.</p>
+    <div class="program-container">
+
+        <div class="program-card">
+            <h3>Play Group</h3>
+            <p>Age 2–3 Years</p>
+            <button onclick="showProgram('play')">View Details</button>
+        </div>
+
+        <div class="program-card">
+            <h3>Nursery</h3>
+            <p>Age 3–4 Years</p>
+             <button onclick="showProgram('nursery')">View Details</button>
+        </div>
+
+        <div class="program-card" >
+            <h3>LKG</h3>
+            <p>Age 4–5 Years</p>
+             <button onclick="showProgram('lkg')">View Details</button>
+        </div>
+
+        <div class="program-card">
+            <h3>UKG</h3>
+            <p>Age 5–6 Years</p>
+             <button onclick="showProgram('ukg')">View Details</button>
+        </div>
+    </div>
+</section>
+
+    <div id="programDetails" class="program-details">
+        <span class="close-btn" onclick="closeProgram()">✖</span>
+    <h3 id="detailTitle"></h3>
+    <p id="detailTeacher"></p>
+    <p id="detailQualification"></p>
+    <p id="detailExperience"></p>
+    <p id="detailActivities"></p>
+</div>
+
+        <section class="teachers-section">
+
+    <h2 class="teachers-title">Meet Our Teachers 👩‍🏫</h2>
+    <p class="teachers-subtitle">
+        Our loving and experienced teachers create a joyful learning environment.
+    </p>
+
+    <div class="teachers-container">
+
+        <div class="teacher-card">
+            <img src="https://img.freepik.com/premium-photo/indian-male-teacher-teaching-classroom_601128-13288.jpg" alt="Teacher">
+            <h3>Mr.Vishnu</h3>
+            <p>Principal</p>
+        </div>
+
+        <div class="teacher-card">
+            <img src="https://img.freepik.com/premium-photo/happy-indian-school-female-teacher-standing-proudly_928503-3863.jpg?w=360" alt="Teacher">
+            <h3>Ms.jessyca</h3>
+            <p>Vise-Principal</p>
+        </div>
+
+    </div>
+    <section class="all-staff-section">
+
+    <h2 class="teachers-title">Our Support Staff 👩‍🏫</h2>
+
+    <div class="teachers-container">
+
+        <!-- Teaching Staff -->
+        <div class="teacher-card">
+            <img src="https://img.freepik.com/premium-photo/indian-teachers-indian-students-indian-teachers-day_978786-47187.jpg?w=2000">
+            <h3>Ms. Anjali Sharma</h3>
+            <p>Head Teacher – Nursery</p>
+        </div>
+
+        <div class="teacher-card">
+            <img src="https://images.rawpixel.com/image_1300/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTEyL2hpcHBvdW5pY29ybl9waG90b19vZl9hX3NtaWxlX3N0dWRlbnRfYXJhYl9tZW5faG9sZGluZ19ib29rX2xpYl9lN2EzZTQ2ZC0xNzYyLTRkYmUtYThmMy02NjhkZWY0Mjc2ZGFfMS5qcGc.jpg=================">
+            <h3>Mr.Siva Deth</h3>
+            <p>Senior Teacher – UKG</p>
+        </div>
+
+         <div class="teacher-card">
+            <img src="https://static.vecteezy.com/system/resources/previews/046/654/179/non_2x/indian-female-teacher-wearing-a-saree-standing-in-front-of-students-smiling-with-her-arms-crossed-photo.jpeg">
+            <h3>Ms. Priya</h3>
+            <p>LKG Teacher</p>
+        </div>
+        <div class="teacher-card">
+            <img src="https://img.freepik.com/premium-photo/indian-teachers-indian-students-indian-teachers-day_978786-47048.jpg?w=2000">
+            <h3>Ms. Kavita Rao</h3>
+            <p>Play Group Teacher</p>
+        </div>
+
+        <!-- Support Staff -->
+        <div class="teacher-card">
+            <img src="https://img.freepik.com/premium-photo/indian-male-teacher_981168-3022.jpg?w=2000">
+            <h3>Mr. Ramesh Kumar</h3>
+            <p>Administrator</p>
+        </div>
+
+        <div class="teacher-card">
+            <img src="https://indianaglobalteachers.com/img/images/about3.webp">
+            <h3>Ms. Latha</h3>
+            <p>Care Assistant</p>
+        </div>
+
+    </div>
+</section>
+</section>
+	<footer class="footer">
+		<div class="footer-container">
+			<div class="footer-about">
+				<h2>HappyBuds Kindergarten 🌸</h2>
+				<p>Where Little Minds Grow Big Dreams 💛</p>
+			</div>
+			<div class="footer-links">
+				<h3>Quick Links</h3>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="about.html">About Us</a></li>
+					<li><a href="program.html">Programs</a></li>
+					<li><a href="galary.html">Gallery</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</div>
+			<div class="footer-contact">
+				<h3>Contact Us</h3>
+				<p>📍 Kattakkada, Kerala</p>
+				<p>📞 +91 98765 43210</p>
+				<p>📧 happybuds@gmail.com</p>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<p>© 2026 HappyBuds Kindergarten | All Rights Reserved</p>
+		</div>
+	</footer>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navItems = document.getElementById('nav-items');
+
+    hamburger.addEventListener('click', () => {
+        navItems.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-items a').forEach(link => {
+        link.addEventListener('click', () => {
+            navItems.classList.remove('active');
+            hamburger.classList.remove('active');
+        });
+    });
+    function showProgram(type) {
+
+    const programs = {
+        play: {
+            title: "Play Group (2–3 Years)",
+            teacher: "Class Teacher: Ms. Kavita Rao",
+            qualification: "🎓 Diploma in Early Childhood Care",
+            experience: "📅 5+ Years Experience",
+            activities: "🎨 Activities: Rhymes, Sensory Play, Free Play"
+        },
+        nursery: {
+            title: "Nursery (3–4 Years)",
+            teacher: "Class Teacher: Ms. Anjali Sharma",
+            qualification: "🎓 B.Ed in Early Education",
+            experience: "📅 8+ Years Experience",
+            activities: "📚 Activities: Alphabet Learning, Story Time, Craft"
+        },
+        lkg: {
+            title: "LKG (4–5 Years)",
+            teacher: "Class Teacher: Ms. Priya",
+            qualification: "🎓 M.Ed Child Development",
+            experience: "📅 6+ Years Experience",
+            activities: "✏ Activities: Writing Practice, Phonics, Drawing"
+        },
+        ukg: {
+            title: "UKG (5–6 Years)",
+            teacher: "Class Teacher: Mr. Siva Deth",
+            qualification: "🎓 B.Ed Primary Education",
+            experience: "📅 7+ Years Experience",
+            activities: "📖 Activities: Reading, Basic Maths, Projects"
+        }
+    };
+
+    document.getElementById("detailTitle").innerText = programs[type].title;
+    document.getElementById("detailTeacher").innerText = programs[type].teacher;
+    document.getElementById("detailQualification").innerText = programs[type].qualification;
+    document.getElementById("detailExperience").innerText = programs[type].experience;
+    document.getElementById("detailActivities").innerText = programs[type].activities;
+
+    document.getElementById("programDetails").style.display = "block";
+}
+function closeProgram() {
+    document.getElementById("programDetails").style.display = "none";
+}
+const loginBtn = document.querySelector('.login-btn-nav');
+const dropdown = document.querySelector('.dropdown-content');
+
+loginBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    dropdown.classList.toggle('show');
+});
+
+window.addEventListener('click', function() {
+    dropdown.classList.remove('show');
+});
+</script>
+</body>
+</html>

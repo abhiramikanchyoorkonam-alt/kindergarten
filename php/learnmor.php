@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Learn More — HappyBuds</title>
+	<link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+	<header>
+		<div class="nav-bar">
+			 <div class="logo"> <a href="index.html" class="logo-text">
+				<span>H</span>
+				<span>a</span>
+				<span>p</span>
+				<span>p</span>
+				<span>y</span>
+				<span>B</span>
+				<span>u</span>
+				<span>d</span>
+				<span>s</span></a></div>
+			<button class="hamburger" id="hamburger" aria-controls="nav-items" aria-expanded="false" aria-label="Toggle navigation">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+			<nav class="nav-items" id="nav-items">
+				<a href="about.html">About</a>
+				<a href="program.html">Program</a>
+				<a href="galary.html">Galary</a>
+				<a href="contact.html">Contact</a>
+				<a href="application.html"><button>Enroll</button></a>
+				<div class="login-dropdown">
+                <button class="login-btn-nav">Login ▾</button>
+                <div class="dropdown-content">
+                <a href="adm_login.html">Admin Login</a>
+                <a href="prnt_login.html">Parent Login</a>
+                </div>
+                </div>
+			</nav>
+		</div>
+	</header>
+    <section class="learn-hero">
+    <h1>Learn More About HappyBuds</h1>
+    <p>Discover our programs, values, and joyful learning environment.</p>
+</section>
+
+<section class="learn-content">
+
+    <div class="learn-card">
+        <h2>Our Teaching Approach</h2>
+        <p>
+            We focus on play-based learning, creativity, and hands-on activities 
+            that help children develop confidence and curiosity.
+        </p>
+    </div>
+
+    <div class="learn-card">
+        <h2>Safe & Secure Campus</h2>
+        <p>
+            Our campus is fully secured and designed to provide a safe and 
+            nurturing environment for every child.
+        </p>
+    </div>
+
+    <div class="learn-card">
+        <h2>Qualified Teachers</h2>
+        <p>
+            Our trained educators are passionate about early childhood 
+            development and individual attention.
+        </p>
+    </div>
+</section>
+	<section class="learn-sections">
+
+    <div class="learn-main-card" >
+        <h3>Admission Process</h3>
+        <button onclick="openInfo('admission')"> View Details</button>
+    </div>
+
+    <div class="learn-main-card" >
+        <h3>Documents Required</h3>
+        <button onclick="openInfo('documents')">View Details</button>
+    </div>
+
+    <div class="learn-main-card">
+        <h3>Fee Structure</h3>
+        <button onclick="openInfo('fees')">View Details</button>
+    </div>
+
+    <div class="learn-main-card">
+        <h3>Parent Interface</h3>
+        <button onclick="openInfo('parent')">View Details</button>
+    </div>
+
+    <div class="learn-main-card" >
+        <h3>Login Information</h3>
+        <button onclick="openInfo('login')">View Details</button>
+    </div>
+</div>
+</section>
+<div id="infoModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeInfo()">×</span>
+        <h2 id="infoTitle"></h2>
+        <div id="infoContent"></div>
+    </div>
+    </div>
+    <div class="quick-adm">
+    <h1>Give your Child A Better Life</h1>
+    <p>Give your child the best start in life with HappyBuds Kindergarten!</p>
+    <div class="quick-adm-button">
+    <a href="application.html"><button>Apply for Admission</button></a>
+    <a href="contact.html"><button>Contact Us</button></a></div>
+ </div>
+    <div id="programDetails" class="program-details">
+        <span class="close-btn" onclick="closeProgram()">✖</span>
+     <div id="programContent"></div>
+</div>
+	<footer class="footer">
+		<div class="footer-container">
+			<div class="footer-about">
+				<h2>HappyBuds Kindergarten 🌸</h2>
+				<p>Where Little Minds Grow Big Dreams 💛</p>
+			</div>
+			<div class="footer-links">
+				<h3>Quick Links</h3>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="about.html">About Us</a></li>
+					<li><a href="program.html">Programs</a></li>
+					<li><a href="galary.html">Gallery</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</div>
+			<div class="footer-contact">
+				<h3>Contact Us</h3>
+				<p>📍 Kattakkada, Kerala</p>
+				<p>📞 +91 98765 43210</p>
+				<p>📧 happybuds@gmail.com</p>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<p>© 2026 HappyBuds Kindergarten | All Rights Reserved</p>
+		</div>
+	</footer>
+
+	<script>
+		const hamburger = document.getElementById('hamburger');
+		const navItems = document.getElementById('nav-items');
+
+		function toggleNav(){
+			const isActive = navItems.classList.toggle('active');
+			hamburger.classList.toggle('active');
+			hamburger.setAttribute('aria-expanded', isActive);
+		}
+
+		hamburger.addEventListener('click', toggleNav);
+
+		document.querySelectorAll('.nav-items a').forEach(link => {
+			link.addEventListener('click', () => {
+				navItems.classList.remove('active');
+				hamburger.classList.remove('active');
+				hamburger.setAttribute('aria-expanded','false');
+			});
+		});
+        function openInfo(section) {
+
+    const modal = document.getElementById("infoModal");
+    const title = document.getElementById("infoTitle");
+    const content = document.getElementById("infoContent");
+
+    let text = "";
+
+    if (section === "admission") {
+        title.innerText = "Admission Process";
+        text = `
+            <p>1. Fill out the online application form.</p>
+            <p>2. Submit required documents.</p>
+            <p>3. Attend interaction session.</p>
+            <p>4. Confirm admission by paying registration fee.</p>
+            <p>4. registration fee-300.</p>
+        `;
+    }
+
+    if (section === "documents") {
+        title.innerText = "Documents Required";
+
+        text = `
+            <h4>Nursery:</h4>
+            <p>- Birth Certificate</p>
+            <p>- 2 Passport Size Photos</p>
+
+            <h4>LKG:</h4>
+            <p>- Previous School Report (if applicable)</p>
+            <p>- Aadhaar Copy</p>
+
+            <h4>UKG:</h4>
+            <p>- Transfer Certificate</p>
+            <p>- Medical Certificate</p>
+        `;
+    }
+
+    if (section === "fees") {
+        title.innerText = "Fee Structure";
+
+        text = `
+            <h4>Nursery</h4>
+            <p>Admission Fee: ₹10,000</p>
+            <p>Monthly Fee: ₹3,000</p>
+
+            <h4>LKG</h4>
+            <p>Admission Fee: ₹12,000</p>
+            <p>Monthly Fee: ₹3,500</p>
+
+            <h4>UKG</h4>
+            <p>Admission Fee: ₹15,000</p>
+            <p>Monthly Fee: ₹4,000</p>
+        `;
+    }
+
+    if (section === "parent") {
+        title.innerText = "Parent Interface";
+
+        text = `
+            <p>Parents can:</p>
+            <p>- View attendance records</p>
+            <p>- Track homework</p>
+            <p>- Receive school announcements</p>
+            <p>- Communicate with teachers</p>
+        `;
+    }
+
+    if (section === "login") {
+        title.innerText = "Login Information";
+
+        text = `
+            <p>Each parent receives a unique login ID and password.</p>
+            <p>Use the Login page to access the parent dashboard.</p>
+            <p>If you forget your password, use the 'Forgot Password' option.</p>
+        `;
+    }
+
+    content.innerHTML = text;
+    modal.style.display = "block";
+}
+
+function closeInfo() {
+    document.getElementById("infoModal").style.display = "none";
+}
+const modal = document.getElementById("infoModal");
+
+window.onclick = function(event) {
+    if (event.target === modal) {
+        closeInfo();
+    }
+}
+const loginBtn = document.querySelector('.login-btn-nav');
+const dropdown = document.querySelector('.dropdown-content');
+
+loginBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    dropdown.classList.toggle('show');
+});
+
+window.addEventListener('click', function() {
+    dropdown.classList.remove('show');
+});
+	</script>
+</body>
+</html>

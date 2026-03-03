@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Celebrations — HappyBuds</title>
+	<title>Parent — HappyBuds</title>
 	<link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
@@ -44,8 +44,8 @@
 	<main class="page-content">
 		<section class="hero">
 			<div class="hero-text">
-				<h2>Celebrations</h2>
-				<p>Festivals and special events at HappyBuds.</p>
+				<h2>For Parents</h2>
+				<p>Information and resources for families at HappyBuds.</p>
 			</div>
 			<div class="hero-img">
 				<img src="log/logo home.png" alt="logo">

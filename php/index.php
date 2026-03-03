@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HappyBuds</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <header>
+        <div class="nav-bar">
+             <div class="logo"> <a href="index.html" class="logo-text">
+                <span>H</span>
+                <span>a</span>
+                <span>p</span>
+                <span>p</span>
+                <span>y</span>
+                <span>B</span>
+                <span>u</span>
+                <span>d</span>
+                <span>s</span></a></div>
+            <button class="hamburger" id="hamburger" aria-controls="nav-items" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav-items" id="nav-items">
+                <a href="about.html">About</a>
+                <a href="program.html">Program</a>
+                <a href="galary.html">Galary</a>
+                <a href="contact.html">Contact</a>
+                <a href="application.html"><button>Enroll</button></a>
+                <div class="login-dropdown">
+                <button class="login-btn-nav">Login ▾</button>
+                <div class="dropdown-content">
+                <a href="adm_login.html">Admin Login</a>
+                <a href="prnt_login.html">Parent Login</a>
+                </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="hero">
+        <div class="hero-text">
+            <h2>Where Little Mind <br> Grow Big.. </h2>
+            <p>A Safe, Fun, & Loving Place For Early Learning </p>
+            <a href="application.html"><button>Enroll Now</button></a>
+            <a href="learnmor.html"><button>Learn More</button></a>
+        </div>
+        <div class="hero-img">
+            <img src="log/logo home.png" alt="logo">
+        </div>
+    </div>
+
+        <section class="program-section">
+    <h2 class="program-title">Our Programs 🎓</h2>
+    <div class="program-container">
+
+        <div class="program-card">
+            <h3>Play Group</h3>
+            <p>Age 2–3 Years</p>
+            <img src="https://mindseed.in/wp-content/uploads/2025/01/Kindergarten-program-Mindseed-Preschool.jpg" alt="">
+            <button onclick="showProgram('play')">View Details</button>
+        </div>
+
+        <div class="program-card">
+            <h3>Nursery</h3>
+            <p>Age 3–4 Years</p>
+            <img src="https://globalindianschool.org/ae/wp-content/uploads/sites/21/2024/09/The-Best-Montessori-Indian-School-in-Abu-Dhabi-1.jpg" alt="">
+             <button onclick="showProgram('nursery')">View Details</button>
+        </div>
+
+        <div class="program-card" >
+            <h3>LKG</h3>
+            <p>Age 4–5 Years</p>
+            <img src="https://tse2.mm.bing.net/th/id/OIP.MWzkPayNUTLwBvcKZIm2qQHaE8?pid=ImgDet&w=184&h=122&c=7&dpr=1.3&o=7&rm=3" alt="">
+             <button onclick="showProgram('lkg')">View Details</button>
+        </div>
+
+        <div class="program-card">
+            <h3>UKG</h3>
+            <p>Age 5–6 Years</p>
+            <img src="https://www.rfs.edu.in/Nagothane-EM/img/ppsp03.jpg" alt="">
+             <button onclick="showProgram('ukg')">View Details</button>
+        </div>
+    </div>
+</section>
+ <section class="values-section">
+    <h2 class="values-title">Our Values 🌟</h2>
+
+    <div class="values-container">
+
+        <div class="value-card">
+            <h3>🌱 Growth</h3>
+            <p>We nurture curiosity and creativity to help every child grow confidently.</p>
+        </div>
+
+        <div class="value-card">
+            <h3>💛 Care</h3>
+            <p>A safe, loving and supportive environment where every child feels valued.</p>
+        </div>
+
+        <div class="value-card">
+            <h3>🎨 Creativity</h3>
+            <p>Encouraging imagination through art, storytelling and hands-on learning.</p>
+        </div>
+
+        <div class="value-card">
+            <h3>🤝 Respect</h3>
+            <p>Teaching kindness, sharing and respect for others from an early age.</p>
+        </div>
+
+    </div>
+</section>
+ <div class="quick-adm">
+    <h1>Give your Child A Better Life</h1>
+    <p>Give your child the best start in life with HappyBuds Kindergarten!</p>
+    <div class="quick-adm-button">
+    <a href="application.html"><button>Apply for Admission</button></a>
+    <a href="contact.html"><button>Contact Us</button></a></div>
+ </div>
+    <div id="programDetails" class="program-details">
+        <span class="close-btn" onclick="closeProgram()">✖</span>
+     <div id="programContent"></div>
+</div>
+    <footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-about">
+            <h2>HappyBuds Kindergarten 🌸</h2>
+            <p>Where Little Minds Grow Big Dreams 💛</p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="program.html">Programs</a></li>
+                <li><a href="galary.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Contact Us</h3>
+            <p>📍 Kattakkada, Kerala</p>
+            <p>📞 +91 98765 43210</p>
+            <p>📧 happybuds@gmail.com</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 HappyBuds Kindergarten | All Rights Reserved</p>
+    </div>
+</footer>
+
+    <script>
+    const hamburger = document.getElementById('hamburger');
+    const navItems = document.getElementById('nav-items');
+
+    function toggleNav(){
+        const isActive = navItems.classList.toggle('active');
+        hamburger.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', isActive);
+    }
+
+    hamburger.addEventListener('click', toggleNav);
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-items a').forEach(link => {
+        link.addEventListener('click', () => {
+            navItems.classList.remove('active');
+            hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+        });
+    });
+    function showProgram(type) {
+
+    const programs = {
+
+        play: `
+            <h3>Play Group (2–3 Years)</h3>
+            <p><strong>Focus:</strong> Social interaction, motor skills, sensory play.</p>
+            <p><strong>Activities:</strong> Rhymes, storytelling, art & craft, outdoor play.</p>
+            <p><strong>Timing:</strong> Monday–Friday | 9:30 AM – 12:00 PM</p>
+        `,
+
+        nursery: `
+            <h3>Nursery (3–4 Years)</h3>
+            <p><strong>Focus:</strong> Alphabet basics, number learning, communication skills.</p>
+            <p><strong>Activities:</strong> Story time, drawing, music, fun worksheets.</p>
+            <p><strong>Timing:</strong> Monday–Friday | 9:00 AM – 12:30 PM</p>
+        `,
+
+        lkg: `
+            <h3>LKG (4–5 Years)</h3>
+            <p><strong>Focus:</strong> Reading readiness, phonics, basic writing.</p>
+            <p><strong>Activities:</strong> Writing practice, creative art, group learning.</p>
+            <p><strong>Timing:</strong> Monday–Friday | 9:00 AM – 1:00 PM</p>
+        `,
+
+        ukg: `
+            <h3>UKG (5–6 Years)</h3>
+            <p><strong>Focus:</strong> Advanced phonics, math basics, school readiness.</p>
+            <p><strong>Activities:</strong> Reading, basic maths, project activities.</p>
+            <p><strong>Timing:</strong> Monday–Friday | 9:00 AM – 1:30 PM</p>
+        `
+    };
+
+    document.getElementById("programContent").innerHTML = programs[type];
+    document.getElementById("programDetails").style.display = "block";
+}
+
+function closeProgram() {
+    document.getElementById("programDetails").style.display = "none";
+}
+const loginBtn = document.querySelector('.login-btn-nav');
+const dropdown = document.querySelector('.dropdown-content');
+
+loginBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    dropdown.classList.toggle('show');
+});
+
+window.addEventListener('click', function() {
+    dropdown.classList.remove('show');
+});
+    </script>
+
+</body>
+</html>
