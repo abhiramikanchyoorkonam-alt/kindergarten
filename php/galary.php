@@ -87,7 +87,6 @@
     <div id="modalImages" class="modal-images"></div>
   </div>
 </div>
-<!-- POPUP WINDOW -->
 
 	<footer class="footer">
 		<div class="footer-container">
