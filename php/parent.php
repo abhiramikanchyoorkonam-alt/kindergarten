@@ -9,7 +9,7 @@
 <body>
 	<header>
 		<div class="nav-bar">
-			 <div class="logo"> <a href="index.html" class="logo-text">
+			 <div class="logo"> <a href="index.php" class="logo-text">
 				<span>H</span>
 				<span>a</span>
 				<span>p</span>
@@ -25,16 +25,16 @@
 				<span></span>
 			</button>
 			<nav class="nav-items" id="nav-items">
-				<a href="about.html">About</a>
-				<a href="program.html">Program</a>
-				<a href="galary.html">Galary</a>
-				<a href="contact.html">Contact</a>
-				<a href="application.html"><button>Enroll</button></a>
+				<a href="about.php">About</a>
+				<a href="program.php">Program</a>
+				<a href="galary.php">Galary</a>
+				<a href="contact.php">Contact</a>
+				<a href="application.php"><button>Enroll</button></a>
 				<div class="login-dropdown">
                 <button class="login-btn-nav">Login ▾</button>
                 <div class="dropdown-content">
-                <a href="adm_login.html">Admin Login</a>
-                <a href="prnt_login.html">Parent Login</a>
+                <a href="adm_login.php">Admin Login</a>
+                <a href="prnt_login.php">Parent Login</a>
                 </div>
                 </div>
 			</nav>
@@ -62,11 +62,11 @@
 			<div class="footer-links">
 				<h3>Quick Links</h3>
 				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li><a href="about.html">About Us</a></li>
-					<li><a href="program.html">Programs</a></li>
-					<li><a href="galary.html">Gallery</a></li>
-					<li><a href="contact.html">Contact</a></li>
+					<li><a href="index.php">Home</a></li>
+					<li><a href="about.php">About Us</a></li>
+					<li><a href="program.php">Programs</a></li>
+					<li><a href="galary.php">Gallery</a></li>
+					<li><a href="contact.php">Contact</a></li>
 				</ul>
 			</div>
 			<div class="footer-contact">
