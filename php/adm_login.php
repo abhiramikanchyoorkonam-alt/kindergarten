@@ -1,3 +1,45 @@
+<?php
+session_start();
+
+$servername = "localhost";
+$dbusername = "root";
+$dbpassword = "";
+$dbname = "happybuds";
+
+$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $user = $_POST['username'];
+    $pass = $_POST['password'];
+
+    $stmt = $conn->prepare("SELECT id, password FROM admin_users WHERE username=?");
+    $stmt->bind_param("s", $user);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($id, $hashed_password);
+        $stmt->fetch();
+
+        if (password_verify($pass, $hashed_password)) {
+            $_SESSION['admin_id'] = $id;
+            $_SESSION['admin_user'] = $user;
+            header("Location: admin_dashboard.php");
+            exit();
+        } else {
+            $error = "Invalid password!";
+        }
+    } else {
+        $error = "Username not found!";
+    }
+
+    $stmt->close();
+}
+$conn->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,16 +88,16 @@
 
         <h2>Admin Login</h2>
         <p>Access to the dashboard</p>
-
-        <form>
+		<?php if(isset($error)) { echo "<p style='color:red;'>$error</p>"; } ?>
+        <form action="" method="post">
             <div class="input-group">
                 <label>Email</label>
-                <input type="email" placeholder="Enter your email" required>
+                <input type="email" name="username" placeholder="Enter your email" required>
             </div>
 
             <div class="input-group">
                 <label>Password</label>
-                <input type="password" placeholder="Enter your password" required>
+                <input type="password" name="password" placeholder="Enter your password" required>
             </div>
 
             <div class="login-options">
