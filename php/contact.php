@@ -14,14 +14,14 @@ if ($conn->connect_error) {
 	<link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-	<?php
+<?php
 if(isset($_POST['submit'])) {
 
     $name = $_POST['name'];
     $email = $_POST['email'];
     $message = $_POST['message'];
 
-    $sql = "INSERT INTO contacts (name, email, message)
+    $sql = "INSERT INTO contacts (name, email, message) 
             VALUES ('$name', '$email', '$message')";
 
     if($conn->query($sql) === TRUE) {
