@@ -48,7 +48,7 @@
             <a href="learnmor.php"><button>Learn More</button></a>
         </div>
         <div class="hero-img">
-            <img src="log/logo home.png" alt="logo">
+            <img src="logo_home.png" alt="logo">
         </div>
     </div>
 

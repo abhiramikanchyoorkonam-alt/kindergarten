@@ -7,6 +7,15 @@
 	<link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
+	<?php
+if(isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
+
+    echo "<script>alert('Message Sent Successfully!');</script>";
+}
+?>
 	<header>
 		<div class="nav-bar">
 			 <div class="logo"> <a href="index.php" class="logo-text">
@@ -40,8 +49,8 @@
             </nav>
         </div>
 		</header>
-        <main class="contact-main">
-            <section class="contact-section">
+    <main class="contact-main">
+    <section class="contact-section">
     <h2 class="contact-main-title">Get in Touch with Us 😊</h2>
     <p class="contact-main-subtitle">
         We'd love to hear from you! Drop us a message or get in touch using the information below.
@@ -49,18 +58,18 @@
   
     <h3 class="contact-form-title">Send us a Message</h3>
 
-    <form class="contact-form">
+    <form class="contact-form" method="post" action="">
 
         <label for="name">Your Name</label>
-        <input type="text" id="name" required>
+        <input type="text" id="name" name="name" required>
 
         <label for="email">Email Address</label>
-        <input type="email" id="email" required>
+        <input type="email" id="email" name="email" required>
 
         <label for="message">Your Message</label>
-        <textarea id="message" rows="4" required></textarea>
+        <textarea id="message" name="message" rows="4" required></textarea>
 
-        <button type="submit">Send Message</button>
+        <button type="submit" name="submit">Send Message</button>
 
     </form>
 
