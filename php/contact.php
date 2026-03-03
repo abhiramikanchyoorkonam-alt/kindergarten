@@ -21,14 +21,16 @@ if(isset($_POST['submit'])) {
     $email = $_POST['email'];
     $message = $_POST['message'];
 
-    $sql = "INSERT INTO contacts (name, email, message) 
-            VALUES ('$name', '$email', '$message')";
+    $stmt = $conn->prepare("INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $name, $email, $message);
 
-    if($conn->query($sql) === TRUE) {
+    if($stmt->execute()) {
         echo "<script>alert('Message saved successfully!');</script>";
     } else {
-        echo "Error: " . $conn->error;
+        echo "Error: " . $stmt->error;
     }
+
+    $stmt->close();
 }
 ?>
 	<header>
