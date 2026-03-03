@@ -1,3 +1,10 @@
+<?php
+$conn = new mysqli("localhost", "root", "", "happybuds");
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +16,19 @@
 <body>
 	<?php
 if(isset($_POST['submit'])) {
+
     $name = $_POST['name'];
     $email = $_POST['email'];
     $message = $_POST['message'];
 
-    echo "<script>alert('Message Sent Successfully!');</script>";
+    $sql = "INSERT INTO contacts (name, email, message)
+            VALUES ('$name', '$email', '$message')";
+
+    if($conn->query($sql) === TRUE) {
+        echo "<script>alert('Message saved successfully!');</script>";
+    } else {
+        echo "Error: " . $conn->error;
+    }
 }
 ?>
 	<header>
