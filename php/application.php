@@ -1,3 +1,36 @@
+<?php
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "happybuds_db";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $child_name = $_POST['child_name'];
+    $dob = $_POST['dob'];
+    $parent_name = $_POST['parent_name'];
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
+    $program = $_POST['program'];
+
+    $stmt = $conn->prepare("INSERT INTO admission (child_name, dob, parent_name, phone, email, program) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssss", $child_name, $dob, $parent_name, $phone, $email, $program);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Admission form submitted successfully!'); window.location='application.php';</script>";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    $stmt->close();
+}
+$conn->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +77,7 @@
         <main class="page-content">
         <p class="form-subtitle">
         Please fill out this short form to start the enrollment process.</p>
-        <form class="admission-form" action="#" method="post">
+    <form class="admission-form" action="submit_admission.php" method="post">
 
     <h2>Admission Form</h2>
 
