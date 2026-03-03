@@ -9,7 +9,8 @@
 <body>
     <header>
         <div class="nav-bar">
-             <div class="logo"> <a href="index.php" class="logo-text">
+             <div class="logo"> 
+                <a href="index.php" class="logo-text">
                 <span>H</span>
                 <span>a</span>
                 <span>p</span>
@@ -48,7 +49,7 @@
             <a href="learnmor.php"><button>Learn More</button></a>
         </div>
         <div class="hero-img">
-            <img src="logo_home.png" alt="logo">
+            <img src="\project\log\logo_home.png" alt="logo">
         </div>
     </div>
 
