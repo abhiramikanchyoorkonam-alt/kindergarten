@@ -89,7 +89,7 @@ $conn->close();
         <h2>Admin Login</h2>
         <p>Access to the dashboard</p>
 		<?php if(isset($error)) { echo "<p style='color:red;'>$error</p>"; } ?>
-        <form action="" method="post">
+        <form action="admin.php" method="post">
             <div class="input-group">
                 <label>Email</label>
                 <input type="email" name="username" placeholder="Enter your email" required>
@@ -153,7 +153,6 @@ $conn->close();
 
 	hamburger.addEventListener('click', toggleNav);
 
-	// Close menu when a link is clicked
 	document.querySelectorAll('.nav-items a').forEach(link => {
 		link.addEventListener('click', () => {
 			navItems.classList.remove('active');
