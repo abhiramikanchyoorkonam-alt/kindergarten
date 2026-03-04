@@ -1,3 +1,42 @@
+<?php
+session_start();
+$conn = new mysqli("localhost", "root", "", "happybuds");
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $stmt = $conn->prepare("SELECT id, password FROM parent_users WHERE email=?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($id, $hashed_password);
+        $stmt->fetch();
+
+        if (password_verify($password, $hashed_password)) {
+            $_SESSION['parent_id'] = $id;
+            $_SESSION['parent_email'] = $email;
+
+            header("Location: parent_dashboard.php");
+            exit();
+        } else {
+            $error = "Invalid Password!";
+        }
+    } else {
+        $error = "Email not found!";
+    }
+
+    $stmt->close();
+}
+$conn->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,23 +79,14 @@
             </nav>
         </div>
     </header>
-	<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login - HappyBuds</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheet.css">
-</head>
-<body>
-
+<?php if(isset($error)) { echo "<p style='color:red;'>$error</p>"; } ?>
 <section class="login-section">
     <div class="login-container">
 
         <h2>Parent Login</h2>
         <p>Access your child’s dashboard</p>
 
-        <form>
+        <form action="parent.php" method="post">
             <div class="input-group">
                 <label>Email</label>
                 <input type="email" placeholder="Enter your email" required>

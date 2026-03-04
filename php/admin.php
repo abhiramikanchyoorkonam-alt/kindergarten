@@ -41,17 +41,127 @@
 		</div>
 	</header>
 
-	<main class="page-content">
-		<section class="hero">
-			<div class="hero-text">
-				<h2>Admin</h2>
-				<p>Administrator access and tools.</p>
-			</div>
-			<div class="hero-img">
-				<img src="log/logo home.png" alt="logo">
-			</div>
-		</section>
-	</main>
+		<?php
+session_start();
+
+// Optional security (keep if using login)
+if (!isset($_SESSION['admin_id'])) {
+    header("Location: adm_login.php");
+    exit();
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel - HappyBuds</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 220px;
+            background: #2c3e50;
+            color: white;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+        }
+
+        .sidebar a:hover {
+            background: #34495e;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            background: #f4f6f9;
+        }
+
+        .card-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            width: 200px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+        }
+
+        .logout {
+            margin-top: 30px;
+            display: inline-block;
+            background: red;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>HappyBuds Admin</h2>
+    <a href="#">Dashboard</a>
+    <a href="#">Applications</a>
+    <a href="#">Parents</a>
+    <a href="#">Gallery</a>
+    <a href="#">Contact Messages</a>
+    <a href="admin_logout.php">Logout</a>
+</div>
+
+<div class="main-content">
+    <h1>Welcome, Admin 👋</h1>
+    <p>Manage your kindergarten system here.</p>
+
+    <div class="card-container">
+        <div class="card">
+            <h3>📋 Applications</h3>
+            <p>View & manage student applications</p>
+        </div>
+
+        <div class="card">
+            <h3>👨‍👩‍👧 Parents</h3>
+            <p>Manage parent accounts</p>
+        </div>
+
+        <div class="card">
+            <h3>🖼 Gallery</h3>
+            <p>Add or remove images</p>
+        </div>
+
+        <div class="card">
+            <h3>📩 Messages</h3>
+            <p>View contact form messages</p>
+        </div>
+    </div>
+</div>
+
+
 
 	<footer class="footer">
 		<div class="footer-container">
