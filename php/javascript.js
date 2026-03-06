@@ -118,7 +118,7 @@ function openGallery(category) {
             "../music/55.jpg",
             "../music/jj.jpg",
             "../music/jk.jpg",
-            "./music/k.png",
+            "../music/k.png",
             "../music/R.png"
         ];
     }
@@ -163,10 +163,10 @@ function openGallery(category) {
         ];
     }
 
-    images.forEach(src => {
-        const img = document.createElement("img");
-        img.src = src;
-        container.appendChild(img);
+    images.forEach(function(img){
+    const image = document.createElement("img");
+    image.src = img;
+    container.appendChild(image);
     });
 
     modal.style.display = "block";
