@@ -1544,6 +1544,453 @@ body {
     #infoContent p {
         font-size: 14px;
     }
+
+    /* About Page Responsive */
+    .about-hero {
+        padding: 60px 20px;
+    }
+
+    .about-hero h1 {
+        font-size: 28px;
+    }
+
+    .about-hero p {
+        font-size: 16px;
+    }
+
+    .about-story {
+        padding: 50px 20px;
+    }
+
+    .story-image img {
+        max-width: 300px;
+    }
+
+    .story-text h2 {
+        font-size: 24px;
+    }
+
+    .story-text p {
+        font-size: 15px;
+    }
+
+    /* Teachers Section */
+    .teachers-container {
+        gap: 20px;
+    }
+
+    .teacher-card {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .teachers-title {
+        font-size: 26px;
+    }
+
+    /* Why Choose Us */
+    .why-us h2 {
+        font-size: 24px;
+    }
+
+    .why-container {
+        gap: 15px;
+    }
+
+    .why-card {
+        padding: 20px;
+    }
+
+    .why-card h4 {
+        font-size: 16px;
+    }
+
+    /* Forms */
+    .admission-form, 
+    .contact-form {
+        max-width: 100%;
+        padding: 25px;
+        margin: 30px auto;
+    }
+
+    .admission-form h2,
+    .contact-main-title {
+        font-size: 24px;
+    }
+
+    .contact-main-subtitle {
+        font-size: 14px;
+    }
+
+    .contact-form-title {
+        font-size: 20px;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+    .form-buttons button {
+        width: 100%;
+        padding: 12px;
+    }
+
+    /* Program Cards */
+    .program-container {
+        gap: 20px;
+        padding: 0 15px;
+    }
+
+    .program-card {
+        padding: 20px 15px;
+    }
+
+    .program-section {
+        padding: 50px 20px;
+    }
+
+    .program-title {
+        font-size: 24px;
+    }
+
+    /* Gallery */
+    .gallery-hero {
+        padding: 50px 20px;
+    }
+
+    .gallery-cards {
+        padding: 30px 5%;
+    }
+}
+
+@media (max-width: 480px) {
+    /* General */
+    body {
+        font-size: 14px;
+    }
+
+    /* About Page */
+    .about-hero {
+        padding: 40px 15px;
+    }
+
+    .about-hero h1 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .about-hero p {
+        font-size: 14px;
+    }
+
+    .about-story {
+        padding: 30px 15px;
+    }
+
+    .story-image img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .story-text h2 {
+        font-size: 20px;
+    }
+
+    .story-text p {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    /* Mission & Vision */
+    .mission-vision {
+        padding: 30px 15px;
+        gap: 15px;
+    }
+
+    .mv-card {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .mv-card h3 {
+        font-size: 18px;
+    }
+
+    .mv-card p {
+        font-size: 13px;
+    }
+
+    /* Why Choose Us */
+    .why-us {
+        padding: 40px 15px;
+    }
+
+    .why-us h2 {
+        font-size: 20px;
+        margin-bottom: 25px;
+    }
+
+    .why-container {
+        gap: 12px;
+    }
+
+    .why-card {
+        padding: 15px;
+    }
+
+    .why-card h4 {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .why-card p {
+        font-size: 12px;
+    }
+
+    /* Principal Section */
+    .principal {
+        padding: 40px 15px;
+    }
+
+    .principal-image img {
+        max-width: 250px;
+    }
+
+    .principal-text h2 {
+        font-size: 20px;
+    }
+
+    .principal-text h4 {
+        font-size: 14px;
+    }
+
+    /* Teachers */
+    .teachers-section {
+        padding: 40px 15px;
+    }
+
+    .teachers-title {
+        font-size: 22px;
+    }
+
+    .teachers-container {
+        gap: 15px;
+    }
+
+    .teacher-card {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .teacher-card h3 {
+        font-size: 16px;
+    }
+
+    .teacher-card p {
+        font-size: 12px;
+    }
+
+    /* Forms */
+    .admission-form,
+    .contact-form {
+        max-width: 100%;
+        padding: 20px;
+        margin: 20px auto;
+        width: 95vw;
+    }
+
+    .admission-form h2,
+    .contact-main-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .contact-main-subtitle {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    .contact-form-title {
+        font-size: 18px;
+    }
+
+    .form-subtitle {
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+    .admission-form label,
+    .contact-form label {
+        margin-top: 10px;
+        font-size: 13px;
+    }
+
+    .admission-form input,
+    .admission-form select,
+    .contact-form input,
+    .contact-form textarea {
+        padding: 8px 10px;
+        font-size: 13px;
+        margin-top: 4px;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+        margin-top: 15px;
+        gap: 10px;
+    }
+
+    .form-buttons button {
+        width: 100%;
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .contact-form button {
+        margin-top: 15px;
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    /* Program Section */
+    .program-section {
+        padding: 30px 15px;
+    }
+
+    .program-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .program-section p {
+        font-size: 13px;
+        margin-bottom: 25px;
+    }
+
+    .program-container {
+        gap: 15px;
+        padding: 0 5px;
+    }
+
+    .program-card {
+        padding: 15px 10px;
+    }
+
+    .program-card h3 {
+        font-size: 18px;
+    }
+
+    .program-card p {
+        font-size: 12px;
+    }
+
+    .program-card button {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+
+    /* Gallery */
+    .gallery-hero {
+        padding: 40px 15px;
+    }
+
+    .gallery-hero h1 {
+        font-size: 22px;
+    }
+
+    .gallery-cards {
+        padding: 20px 5%;
+        gap: 12px;
+    }
+
+    .category-card {
+        height: 150px;
+    }
+
+    .category-card h3 {
+        font-size: 14px;
+        bottom: 10px;
+        left: 10px;
+    }
+
+    /* Modal */
+    .modal-content {
+        width: 95vw;
+        padding: 20px;
+        margin: 30px auto;
+    }
+
+    .modal-images {
+        gap: 12px;
+    }
+
+    .modal-images img {
+        height: 150px;
+    }
+
+    /* Learn Page */
+    .learn-hero {
+        padding: 40px 20px;
+    }
+
+    .learn-hero h1 {
+        font-size: 22px;
+    }
+
+    .learn-hero p {
+        font-size: 14px;
+    }
+
+    .learn-content,
+    .learn-sections {
+        padding: 30px 15px;
+        gap: 15px;
+    }
+
+    .learn-card,
+    .learn-main-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .learn-card h2,
+    .learn-main-card h3 {
+        font-size: 16px;
+    }
+
+    .learn-card p,
+    .learn-main-card p {
+        font-size: 12px;
+    }
+
+    .learn-main-card button {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+
+    /* Quick Admission */
+    .quick-adm {
+        margin: 30px 10px;
+        padding: 40px 15px;
+    }
+
+    .quick-adm h2 {
+        font-size: 22px;
+    }
+
+    .quick-adm p {
+        font-size: 13px;
+    }
+
+    .quick-adm-button {
+        gap: 10px;
+    }
+
+    .quick-adm-button button {
+        padding: 10px 20px;
+        font-size: 12px;
+    }
 }
 /*-------index------*/
 .quick-adm {

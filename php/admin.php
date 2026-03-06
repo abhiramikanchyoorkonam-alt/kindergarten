@@ -1,11 +1,24 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "happybuds");
+$conn = new mysqli("localhost","root","","happybuds");
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-/* Fetch recent admissions */
+$result1 = $conn->query("SELECT COUNT(*) AS total FROM admission WHERE status='Approved'");
+$row1 = $result1->fetch_assoc();
+$total_students = $row1['total'];
+
+$result2 = $conn->query("SELECT COUNT(*) AS total FROM admission WHERE status='Pending'");
+$row2 = $result2->fetch_assoc();
+$pending_admission = $row2['total'];
+
+$result3 = $conn->query("SELECT COUNT(*) AS total FROM admission");
+$row3 = $result3->fetch_assoc();
+$active_parents = $row3['total'];
+
+$teachers_present = 5;
+
 $recent_admission = [];
 
 $sql = "SELECT child_name, parent_name, dob, program, status, submission_date 
@@ -13,10 +26,10 @@ $sql = "SELECT child_name, parent_name, dob, program, status, submission_date
         ORDER BY submission_date DESC 
         LIMIT 5";
 
-$result = $conn->query("SELECT child_name FROM admission");
+$result = $conn->query($sql);
 
-if ($result && $result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
+if($result && $result->num_rows > 0){
+    while($row = $result->fetch_assoc()){
         $recent_admission[] = $row;
     }
 }
@@ -93,6 +106,105 @@ table th {
 .Approved {
     background: green;
 }
+.status{
+    padding:5px 10px;
+    border-radius:20px;
+    color:white;
+}
+
+.pending{
+    background:orange;
+}
+
+.approved{
+    background:green;
+}
+
+.rejected{
+    background:red;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin: 20px auto;
+        padding: 0 10px;
+    }
+
+    .cards {
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        min-width: 100%;
+        flex: none;
+        padding: 15px;
+    }
+
+    .card p {
+        font-size: 24px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    table th, table td {
+        padding: 8px;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        margin: 15px auto;
+        padding: 0 5px;
+    }
+
+    .cards {
+        gap: 10px;
+    }
+
+    .card {
+        padding: 12px;
+        border-radius: 8px;
+    }
+
+    .card h3 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .card p {
+        font-size: 20px;
+    }
+
+    /* Make table scrollable on small screens */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        font-size: 12px;
+    }
+
+    table th, table td {
+        padding: 6px;
+        min-width: 60px;
+    }
+
+    h2 {
+        font-size: 18px;
+        margin: 15px 0 10px 0;
+    }
+}
 </style>
 </head>
 <body>
@@ -130,23 +242,23 @@ table th {
 		</div>
 	</header>
  <div class="container">
-        <!-- Summary Cards -->
+        
         <div class="cards">
             <div class="card">
                 <h3>Total Students</h3>
-                <p><!-- PHP: total students count --></p>
+                <p><?php echo $total_students; ?></p>
             </div>
             <div class="card">
                 <h3>Pending Admissions</h3>
-                <p><!-- PHP: pending count --></p>
+                <p><?php echo $pending_admission; ?></p>
             </div>
             <div class="card">
                 <h3>Active Parents</h3>
-                <p><!-- PHP: active parents count --></p>
+                <p><?php echo $active_parents; ?></p>
             </div>
             <div class="card">
                 <h3>Teachers Present</h3>
-                <p><!-- PHP: teachers present count --></p>
+                <p><?php echo $teachers_present; ?></p>
             </div>
         </div>
         
@@ -166,26 +278,27 @@ table th {
 $conn = new mysqli("localhost","root","","happybuds");
 
 $sql = "SELECT child_name, parent_name, dob, program, status, submission_date 
-        FROM applications 
+        FROM admission 
         ORDER BY submission_date DESC 
         LIMIT 5";
 
 $result = $conn->query($sql);
 
-$recent_admissions = [];
+$recent_admission = [];
 
 if($result && $result->num_rows > 0){
     while($row = $result->fetch_assoc()){
-        $recent_admissions[] = $row;
+        $recent_admission[] = $row;
     }
 }
-            foreach ($recent_admissions as $app) {
+            foreach ($recent_admission as $app) {
                 echo "<tr>";
                 echo "<td>" . htmlspecialchars($app['child_name']) . "</td>";
                 echo "<td>" . htmlspecialchars($app['parent_name']) . "</td>";
                 echo "<td>" . htmlspecialchars($app['dob']) . "</td>";
                 echo "<td>" . htmlspecialchars($app['program']) . "</td>";
-                echo "<td class='status " . $app['status'] . "'>" . htmlspecialchars($app['status']) . "</td>";
+                $status = strtolower($app['status']);
+                echo "<td class='status $status'>" . htmlspecialchars($app['status']) . "</td>";
                 echo "<td>" . htmlspecialchars($app['submission_date']) . "</td>";
                 echo "</tr>";
             }
