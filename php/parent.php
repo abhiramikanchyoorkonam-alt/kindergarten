@@ -48,7 +48,7 @@
 				<p>Information and resources for families at HappyBuds.</p>
 			</div>
 			<div class="hero-img">
-				<img src="log/logo home.png" alt="logo">
+				<img src="../log/logo_home.png" alt="logo">
 			</div>
 		</section>
 	</main>

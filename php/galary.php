@@ -50,32 +50,32 @@
 <section class="gallery-cards">
 
     <div class="category-card" onclick="openGallery('arts')">
-		<img src="\project\art-and-crft\f.jpeg"  alt="art">
+		<img src="../art-and-crft/f.jpeg"  alt="art">
         <h3>Arts & Craft</h3>
     </div>
 
     <div class="category-card" onclick="openGallery('celebrations')">
-     <img src="\project\cele/19.jpg" alt="">
+     <img src="../cele/19.jpg" alt="">
 		<h3>Celebrations</h3>
     </div>
 
     <div class="category-card" onclick="openGallery('classrooms')">
-        <img src="\project\classroom/9.jpg" alt="">
+        <img src="../classroom/9.jpg" alt="">
 		<h3>Happy Classrooms</h3>
     </div>
 
     <div class="category-card" onclick="openGallery('dance')">
-        <img src="\project\dance/g.jpg" alt="">
+        <img src="../dance/g.jpg" alt="">
 		<h3>Dance & Music</h3>
     </div>
 
     <div class="category-card" onclick="openGallery('outdoor')">
-        <img src="\project\outdoorplay/5.jpg">
+        <img src="../outdoorplay/5.jpg">
 		<h3>Outdoor Play</h3>
     </div>
 
     <div class="category-card" onclick="openGallery('story')">
-		<img src="\project\story-time/m.png" alt="">
+		<img src="../story-time/m.png" alt="">
         <h3>Story Time</h3>
     </div>
 

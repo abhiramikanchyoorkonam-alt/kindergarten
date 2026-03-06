@@ -50,7 +50,7 @@
 <section class="about-story">
     <div class="story-container">
         <div class="story-image">
-            <img src="\project\log\school.png" alt="School Image">
+            <img src="../log/school.png" alt="School Image">
         </div>
         <div class="story-text">
             <h2>Our Story</h2>
