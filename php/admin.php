@@ -4,6 +4,10 @@ $conn = new mysqli("localhost","root","","happybuds");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+$contact_query = "SELECT * FROM contacts ORDER BY created_at DESC";
+$contact_result = $conn->query($contact_query);
+$contact_query = "SELECT name, email, message, created_at FROM contacts ORDER BY created_at DESC";
+$contact_result = $conn->query($contact_query);
 
 $result1 = $conn->query("SELECT COUNT(*) AS total FROM admission WHERE status='Approved'");
 $row1 = $result1->fetch_assoc();
@@ -18,30 +22,17 @@ $row3 = $result3->fetch_assoc();
 $active_parents = $row3['total'];
 
 $teachers_present = 5;
-
-$recent_admission = [];
-
-$sql = "SELECT child_name, parent_name, dob, program, status, submission_date 
-        FROM admission 
-        ORDER BY submission_date DESC 
-        LIMIT 5";
-
-$result = $conn->query($sql);
-
-if($result && $result->num_rows > 0){
-    while($row = $result->fetch_assoc()){
-        $recent_admission[] = $row;
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Admin — HappyBuds</title>
-	<link rel="stylesheet" href="stylesheet.css">
-	<style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — HappyBuds</title>
+<link rel="stylesheet" href="stylesheet.css">
+
+<style>
+
 .container {
     width: 90%;
     margin: 30px auto;
@@ -94,19 +85,6 @@ table th {
 }
 
 .status {
-    padding: 5px 10px;
-    border-radius: 20px;
-    color: white;
-}
-
-.Pending {
-    background: orange;
-}
-
-.Approved {
-    background: green;
-}
-.status{
     padding:5px 10px;
     border-radius:20px;
     color:white;
@@ -124,247 +102,305 @@ table th {
     background:red;
 }
 
-/* Mobile Responsive Styles */
-@media (max-width: 768px) {
-    .container {
-        width: 95%;
-        margin: 20px auto;
-        padding: 0 10px;
-    }
+/* Mobile Responsive */
 
-    .cards {
-        flex-direction: column;
-        gap: 15px;
-        margin-bottom: 20px;
-    }
+@media (max-width:768px){
 
-    .card {
-        min-width: 100%;
-        flex: none;
-        padding: 15px;
-    }
-
-    .card p {
-        font-size: 24px;
-    }
-
-    table {
-        font-size: 14px;
-    }
-
-    table th, table td {
-        padding: 8px;
-    }
-
-    h2 {
-        font-size: 20px;
-        margin-top: 20px;
-    }
+.container{
+width:95%;
+margin:20px auto;
+padding:0 10px;
 }
 
-@media (max-width: 480px) {
-    .container {
-        width: 100%;
-        margin: 15px auto;
-        padding: 0 5px;
-    }
-
-    .cards {
-        gap: 10px;
-    }
-
-    .card {
-        padding: 12px;
-        border-radius: 8px;
-    }
-
-    .card h3 {
-        font-size: 16px;
-        margin-bottom: 8px;
-    }
-
-    .card p {
-        font-size: 20px;
-    }
-
-    /* Make table scrollable on small screens */
-    table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-        font-size: 12px;
-    }
-
-    table th, table td {
-        padding: 6px;
-        min-width: 60px;
-    }
-
-    h2 {
-        font-size: 18px;
-        margin: 15px 0 10px 0;
-    }
+.cards{
+flex-direction:column;
+gap:15px;
 }
+
+.card{
+min-width:100%;
+padding:15px;
+}
+
+.card p{
+font-size:24px;
+}
+
+table{
+font-size:14px;
+}
+
+table th,table td{
+padding:8px;
+}
+
+}
+
+@media (max-width:480px){
+
+table{
+display:block;
+overflow-x:auto;
+white-space:nowrap;
+font-size:12px;
+}
+
+}
+
 </style>
 </head>
-<body>
-	<header>
-		<div class="nav-bar">
-			 <div class="logo"> <a href="index.php" class="logo-text">
-				<span>H</span>
-				<span>a</span>
-				<span>p</span>
-				<span>p</span>
-				<span>y</span>
-				<span>B</span>
-				<span>u</span>
-				<span>d</span>
-				<span>s</span></a></div>
-			<button class="hamburger" id="hamburger" aria-controls="nav-items" aria-expanded="false" aria-label="Toggle navigation">
-				<span></span>
-				<span></span>
-				<span></span>
-			</button>
-			<nav class="nav-items" id="nav-items">
-				<a href="about.php">About</a>
-				<a href="program.php">Program</a>
-				<a href="galary.php">Galary</a>
-				<a href="contact.php">Contact</a>
-				<a href="application.php"><button>Enroll</button></a>
-				<div class="login-dropdown">
-                <button class="login-btn-nav">Login ▾</button>
-                <div class="dropdown-content">
-                <a href="adm_login.php">Admin Login</a>
-                <a href="prnt_login.php">Parent Login</a>
-                </div>
-                </div>
-			</nav>
-		</div>
-	</header>
- <div class="container">
-        
-        <div class="cards">
-            <div class="card">
-                <h3>Total Students</h3>
-                <p><?php echo $total_students; ?></p>
-            </div>
-            <div class="card">
-                <h3>Pending Admissions</h3>
-                <p><?php echo $pending_admission; ?></p>
-            </div>
-            <div class="card">
-                <h3>Active Parents</h3>
-                <p><?php echo $active_parents; ?></p>
-            </div>
-            <div class="card">
-                <h3>Teachers Present</h3>
-                <p><?php echo $teachers_present; ?></p>
-            </div>
-        </div>
-        
-        <!-- Recent Admissions Table -->
-        <h2>Recent Admissions</h2>
-        <table>
-            <tr>
-                <th>Child Name</th>
-                <th>Parent Name</th>
-                <th>Date of Birth</th>
-                <th>Program</th>
-                <th>Status</th>
-                <th>Submitted On</th>
-            </tr>
-            <?php
-			
-$conn = new mysqli("localhost","root","","happybuds");
 
-$sql = "SELECT child_name, parent_name, dob, program, status, submission_date 
-        FROM admission 
-        ORDER BY submission_date DESC 
+<body>
+
+<header>
+<div class="nav-bar">
+
+<div class="logo">
+<a href="index.php" class="logo-text">
+<span>H</span><span>a</span><span>p</span><span>p</span><span>y</span>
+<span>B</span><span>u</span><span>d</span><span>s</span>
+</a>
+</div>
+
+<button class="hamburger" id="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</button>
+
+<nav class="nav-items" id="nav-items">
+
+<a href="about.php">About</a>
+<a href="program.php">Program</a>
+<a href="galary.php">Galary</a>
+<a href="contact.php">Contact</a>
+
+<a href="application.php"><button>Enroll</button></a>
+
+<div class="login-dropdown">
+<button class="login-btn-nav">Login ▾</button>
+
+<div class="dropdown-content">
+<a href="adm_login.php">Admin Login</a>
+<a href="prnt_login.php">Parent Login</a>
+</div>
+
+</div>
+
+</nav>
+</div>
+</header>
+
+
+<div class="container">
+
+<div class="cards">
+
+<div class="card">
+<h3>Total Students</h3>
+<p><?php echo $total_students; ?></p>
+</div>
+
+<div class="card">
+<h3>Pending Admissions</h3>
+<p><?php echo $pending_admission; ?></p>
+</div>
+
+<div class="card">
+<h3>Active Parents</h3>
+<p><?php echo $active_parents; ?></p>
+</div>
+
+<div class="card">
+<h3>Teachers Present</h3>
+<p><?php echo $teachers_present; ?></p>
+</div>
+
+</div>
+
+
+<h2>Recent Admissions</h2>
+
+<table>
+
+<tr>
+<th>Child Name</th>
+<th>Parent Name</th>
+<th>Date of Birth</th>
+<th>Program</th>
+<th>Status</th>
+<th>Action</th>
+<th>Submitted On</th>
+</tr>
+<?php
+
+$sql = "SELECT id, child_name, parent_name, dob, program, status, submission_date
+        FROM admission
+        ORDER BY submission_date DESC
         LIMIT 5";
 
 $result = $conn->query($sql);
 
-$recent_admission = [];
-
 if($result && $result->num_rows > 0){
-    while($row = $result->fetch_assoc()){
-        $recent_admission[] = $row;
-    }
+
+while($app = $result->fetch_assoc()){
+
+$status = strtolower($app['status']);
+
+echo "<tr>";
+
+echo "<td>".htmlspecialchars($app['child_name'])."</td>";
+echo "<td>".htmlspecialchars($app['parent_name'])."</td>";
+echo "<td>".htmlspecialchars($app['dob'])."</td>";
+echo "<td>".htmlspecialchars($app['program'])."</td>";
+
+echo "<td class='status $status'>".htmlspecialchars($app['status'])."</td>";
+
+echo "<td>
+<a href='update_status.php?id=".$app['id']."&status=Approved'>Approve</a> |
+<a href='update_status.php?id=".$app['id']."&status=Rejected'>Reject</a>
+</td>";
+
+echo "<td>".htmlspecialchars($app['submission_date'])."</td>";
+
+echo "</tr>";
 }
-            foreach ($recent_admission as $app) {
-                echo "<tr>";
-                echo "<td>" . htmlspecialchars($app['child_name']) . "</td>";
-                echo "<td>" . htmlspecialchars($app['parent_name']) . "</td>";
-                echo "<td>" . htmlspecialchars($app['dob']) . "</td>";
-                echo "<td>" . htmlspecialchars($app['program']) . "</td>";
-                $status = strtolower($app['status']);
-                echo "<td class='status $status'>" . htmlspecialchars($app['status']) . "</td>";
-                echo "<td>" . htmlspecialchars($app['submission_date']) . "</td>";
-                echo "</tr>";
-            }
-            ?>
-        </table>
-    </div>
+}
+?>
+
+</table>
+<h2>Parent Enquiries</h2>
+
+<table border="1" width="100%">
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Message</th>
+<th>Reply</th>
+<th>Action</th>
+</tr>
+
+<?php
+
+$contact_query = "SELECT * FROM contacts ORDER BY created_at DESC";
+$contact_result = $conn->query($contact_query);
+
+while($row = $contact_result->fetch_assoc()){
+
+?>
+
+<tr>
+
+<td><?php echo $row['name']; ?></td>
+
+<td><?php echo $row['email']; ?></td>
+
+<td><?php echo $row['message']; ?></td>
+
+<td>
+<?php
+if(isset($row['reply']) && $row['reply'] != ""){
+echo $row['reply'];
+}else{
+echo "No reply yet";
+}
+?>
+</td>
+
+<td>
+
+<form method="POST">
+
+<input type="hidden" name="contact_id" value="<?php echo $row['id']; ?>">
+
+<textarea name="reply_message" placeholder="Write reply..." required></textarea>
+
+<br><br>
+
+<button type="submit" name="send_reply">Send Reply</button>
+
+</form>
+
+</td>
+
+</tr>
+
+<?php
+}
+?>
+
+</table>
+</div>
 
 
-	<footer class="footer">
-		<div class="footer-container">
-			<div class="footer-about">
-				<h2>HappyBuds Kindergarten 🌸</h2>
-				<p>Where Little Minds Grow Big Dreams 💛</p>
-			</div>
-			<div class="footer-links">
-				<h3>Quick Links</h3>
-				<ul>
-					<li><a href="index.php">Home</a></li>
-					<li><a href="about.php">About Us</a></li>
-					<li><a href="program.php">Programs</a></li>
-					<li><a href="galary.php">Gallery</a></li>
-					<li><a href="contact.php">Contact</a></li>
-				</ul>
-			</div>
-			<div class="footer-contact">
-				<h3>Contact Us</h3>
-				<p>📍 Kattakkada, Kerala</p>
-				<p>📞 +91 98765 43210</p>
-				<p>📧 happybuds@gmail.com</p>
-			</div>
-		</div>
-		<div class="footer-bottom">
-			<p>© 2026 HappyBuds Kindergarten | All Rights Reserved</p>
-		</div>
-	</footer>
+<footer class="footer">
 
-	<script>
-		const hamburger = document.getElementById('hamburger');
-		const navItems = document.getElementById('nav-items');
+<div class="footer-container">
 
-		function toggleNav(){
-			const isActive = navItems.classList.toggle('active');
-			hamburger.classList.toggle('active');
-			hamburger.setAttribute('aria-expanded', isActive);
-		}
+<div class="footer-about">
+<h2>HappyBuds Kindergarten 🌸</h2>
+<p>Where Little Minds Grow Big Dreams 💛</p>
+</div>
 
-		hamburger.addEventListener('click', toggleNav);
+<div class="footer-links">
 
-		document.querySelectorAll('.nav-items a').forEach(link => {
-			link.addEventListener('click', () => {
-				navItems.classList.remove('active');
-				hamburger.classList.remove('active');
-				hamburger.setAttribute('aria-expanded','false');
-			});
-		});
-		const loginBtn = document.querySelector('.login-btn-nav');
-const dropdown = document.querySelector('.dropdown-content');
+<h3>Quick Links</h3>
 
-loginBtn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    dropdown.classList.toggle('show');
+<ul>
+<li><a href="index.php">Home</a></li>
+<li><a href="about.php">About Us</a></li>
+<li><a href="program.php">Programs</a></li>
+<li><a href="galary.php">Gallery</a></li>
+<li><a href="contact.php">Contact</a></li>
+</ul>
+
+</div>
+
+<div class="footer-contact">
+<h3>Contact Us</h3>
+<p>📍 Kattakkada, Kerala</p>
+<p>📞 +91 98765 43210</p>
+<p>📧 happybuds@gmail.com</p>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 HappyBuds Kindergarten | All Rights Reserved</p>
+</div>
+
+</footer>
+
+
+<script>
+
+const hamburger=document.getElementById('hamburger');
+const navItems=document.getElementById('nav-items');
+
+hamburger.addEventListener('click',()=>{
+
+navItems.classList.toggle('active');
+hamburger.classList.toggle('active');
+
 });
 
-window.addEventListener('click', function() {
-    dropdown.classList.remove('show');
+const loginBtn=document.querySelector('.login-btn-nav');
+const dropdown=document.querySelector('.dropdown-content');
+
+loginBtn.addEventListener('click',function(e){
+
+e.stopPropagation();
+dropdown.classList.toggle('show');
+
 });
-	</script>
+
+window.addEventListener('click',function(){
+
+dropdown.classList.remove('show');
+
+});
+
+</script>
+
 </body>
 </html>
