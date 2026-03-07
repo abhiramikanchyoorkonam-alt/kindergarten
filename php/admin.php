@@ -340,23 +340,6 @@ font-size:12px;
 
 <nav class="nav-items" id="nav-items">
 
-<a href="about.php">About</a>
-<a href="program.php">Program</a>
-<a href="galary.php">Galary</a>
-<a href="contact.php">Contact</a>
-
-<a href="application.php"><button>Enroll</button></a>
-
-<div class="login-dropdown">
-<button class="login-btn-nav">Login ▾</button>
-
-<div class="dropdown-content">
-<a href="adm_login.php">Admin Login</a>
-<a href="prnt_login.php">Parent Login</a>
-
-</div>
-</div>
-
 <a href="logout.php">
 <button style="background:#e74c3c;color:white;">Logout</button>
 </a>

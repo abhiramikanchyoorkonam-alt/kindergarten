@@ -37,6 +37,9 @@
                 <a href="prnt_login.php">Parent Login</a>
                 </div>
                 </div>
+				<a href="logout.php">
+				<button style="background:#e74c3c;color:white;">Logout</button>
+				</a>
 			</nav>
 		</div>
 	</header>
