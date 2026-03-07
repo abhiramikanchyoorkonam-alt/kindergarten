@@ -22,6 +22,10 @@ $row3 = $result3->fetch_assoc();
 $active_parents = $row3['total'];
 
 $teachers_present = 5;
+
+
+
+$conn = new mysqli("localhost","root","","happybuds");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,83 +37,217 @@ $teachers_present = 5;
 
 <style>
 
-.container {
-    width: 90%;
-    margin: 30px auto;
+/* Container */
+
+.container{
+width:90%;
+margin:40px auto;
 }
 
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 40px;
+/* Dashboard Cards */
+
+.cards{
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+margin-bottom:40px;
 }
 
-.card {
-    background: white;
-    flex: 1;
-    min-width: 200px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    text-align: center;
+.card{
+background:linear-gradient(135deg,#ffffff,#f2f6ff);
+flex:1;
+min-width:220px;
+padding:25px;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+text-align:center;
+transition:0.3s;
 }
 
-.card h3 {
-    margin-bottom: 10px;
-    color: #333;
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 12px 25px rgba(0,0,0,0.15);
 }
 
-.card p {
-    font-size: 28px;
-    font-weight: bold;
-    margin: 0;
+.card h3{
+color:#555;
+margin-bottom:10px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    margin-top: 20px;
+.card p{
+font-size:32px;
+font-weight:bold;
+color:#4a6cf7;
+margin:0;
 }
 
-table th, table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
+/* Headings */
+
+h2{
+margin-top:40px;
+color:#333;
+border-left:5px solid #4a6cf7;
+padding-left:10px;
 }
 
-table th {
-    background: #4a6cf7;
-    color: white;
+/* Table */
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+margin-top:20px;
 }
 
-.status {
-    padding:5px 10px;
-    border-radius:20px;
-    color:white;
+table th{
+background:#4a6cf7;
+color:white;
+padding:14px;
+font-weight:500;
+}
+
+table td{
+padding:12px;
+border-bottom:1px solid #eee;
+}
+
+table tr:hover{
+background:#f9fbff;
+}
+
+/* Status Badge */
+
+.status{
+padding:6px 12px;
+border-radius:20px;
+font-size:13px;
+font-weight:600;
+color:white;
 }
 
 .pending{
-    background:orange;
+background:#ff9800;
 }
 
 .approved{
-    background:green;
+background:#2ecc71;
 }
 
 .rejected{
-    background:red;
+background:#e74c3c;
 }
 
-/* Mobile Responsive */
+/* Action Buttons */
+
+a{
+text-decoration:none;
+font-weight:500;
+}
+
+a[href*="Approved"]{
+color:#2ecc71;
+}
+
+a[href*="Rejected"]{
+color:#e74c3c;
+}
+
+/* Reply Form */
+
+textarea{
+width:100%;
+padding:8px;
+border-radius:6px;
+border:1px solid #ddd;
+resize:none;
+font-family:inherit;
+}
+
+button{
+background:#4a6cf7;
+border:none;
+color:white;
+padding:8px 16px;
+border-radius:6px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#364fc7;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.cards{
+flex-direction:column;
+}
+
+table{
+font-size:14px;
+}
+
+}
+
+@media(max-width:480px){
+
+table{
+display:block;
+overflow-x:auto;
+white-space:nowrap;
+}
+
+}
+/* -------- MOBILE RESPONSIVE -------- */
+
+@media (max-width:900px){
+
+.nav-bar{
+flex-wrap:wrap;
+padding:10px;
+}
+
+.nav-items{
+position:absolute;
+top:70px;
+right:0;
+background:white;
+width:100%;
+display:none;
+flex-direction:column;
+align-items:center;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+padding:20px 0;
+}
+
+.nav-items a{
+display:block;
+margin:10px 0;
+}
+
+.nav-items.active{
+display:flex;
+}
+
+.hamburger{
+display:block;
+cursor:pointer;
+}
+
+}
+
+/* Cards */
 
 @media (max-width:768px){
 
 .container{
 width:95%;
 margin:20px auto;
-padding:0 10px;
 }
 
 .cards{
@@ -119,29 +257,54 @@ gap:15px;
 
 .card{
 min-width:100%;
-padding:15px;
+padding:20px;
 }
 
 .card p{
-font-size:24px;
-}
-
-table{
-font-size:14px;
-}
-
-table th,table td{
-padding:8px;
+font-size:26px;
 }
 
 }
 
-@media (max-width:480px){
+/* Tables */
+
+@media (max-width:768px){
 
 table{
 display:block;
 overflow-x:auto;
 white-space:nowrap;
+}
+
+table th, table td{
+padding:10px;
+font-size:14px;
+}
+
+textarea{
+width:200px;
+}
+
+}
+
+/* Extra Small Devices */
+
+@media (max-width:480px){
+
+h2{
+font-size:18px;
+}
+
+.card h3{
+font-size:16px;
+}
+
+.card p{
+font-size:22px;
+}
+
+button{
+padding:6px 12px;
 font-size:12px;
 }
 
@@ -157,8 +320,15 @@ font-size:12px;
 
 <div class="logo">
 <a href="index.php" class="logo-text">
-<span>H</span><span>a</span><span>p</span><span>p</span><span>y</span>
-<span>B</span><span>u</span><span>d</span><span>s</span>
+<span>H</span>
+<span>a</span>
+<span>p</span>
+<span>p</span>
+<span>y</span>
+<span>B</span>
+<span>u</span>
+<span>d</span>
+<span>s</span>
 </a>
 </div>
 
@@ -183,14 +353,16 @@ font-size:12px;
 <div class="dropdown-content">
 <a href="adm_login.php">Admin Login</a>
 <a href="prnt_login.php">Parent Login</a>
-</div>
 
 </div>
+</div>
 
+<a href="logout.php">
+<button style="background:#e74c3c;color:white;">Logout</button>
+</a>
 </nav>
 </div>
 </header>
-
 
 <div class="container">
 
@@ -257,8 +429,9 @@ echo "<td>".htmlspecialchars($app['program'])."</td>";
 echo "<td class='status $status'>".htmlspecialchars($app['status'])."</td>";
 
 echo "<td>
-<a href='update_status.php?id=".$app['id']."&status=Approved'>Approve</a> |
-<a href='update_status.php?id=".$app['id']."&status=Rejected'>Reject</a>
+<a href='update_status.php?id=".$app['id']."&status=Approved'><button>Approve</button></a>
+
+<a href='update_status.php?id=".$app['id']."&status=Rejected'><button>Reject</button></a>
 </td>";
 
 echo "<td>".htmlspecialchars($app['submission_date'])."</td>";
@@ -266,6 +439,19 @@ echo "<td>".htmlspecialchars($app['submission_date'])."</td>";
 echo "</tr>";
 }
 }
+if(isset($_POST['send_reply'])){
+
+$contact_id = $_POST['contact_id'];
+$reply_message = $_POST['reply_message'];
+
+$stmt = $conn->prepare("UPDATE contacts SET reply=? WHERE id=?");
+$stmt->bind_param("si",$reply_message,$contact_id);
+$stmt->execute();
+
+echo "<script>alert('Reply sent successfully');</script>";
+
+}
+
 ?>
 
 </table>
@@ -305,6 +491,7 @@ echo $row['reply'];
 echo "No reply yet";
 }
 ?>
+
 </td>
 
 <td>
