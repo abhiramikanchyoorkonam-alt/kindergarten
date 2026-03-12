@@ -10,22 +10,18 @@ $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
 if(isset($_POST['login'])){
 
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-/* check admin in database */
-
-$sql = "SELECT * FROM admin WHERE email='$email' AND password='$password'";
+$sql = "SELECT * FROM admin_users WHERE username='$email' AND password='$password'";
 $result = $conn->query($sql);
 
-if($result && $result->num_rows == 1){
+if($result->num_rows == 1){
 
 $_SESSION['admin_email'] = $email;
-
-header("Location: admin_dashboard.php");
+header("Location:admin.php");
 exit();
 
 }else{
@@ -33,7 +29,6 @@ exit();
 echo "<script>alert('Invalid email or password');</script>";
 
 }
-
 }
 ?>
 <!DOCTYPE html>
@@ -85,10 +80,10 @@ echo "<script>alert('Invalid email or password');</script>";
         <h2>Admin Login</h2>
         <p>Access to the dashboard</p>
 		<?php if(isset($error)) { echo "<p style='color:red;'>$error</p>"; } ?>
-        <form action="admin.php" method="post">
+        <form action="" method="post">
             <div class="input-group">
                 <label>Email</label>
-                <input type="email" name="username" placeholder="Enter your email" required>
+                <input type="email" name="email" placeholder="Enter your email" required>
             </div>
 
             <div class="input-group">
@@ -100,10 +95,9 @@ echo "<script>alert('Invalid email or password');</script>";
                 <label>
                     <input type="checkbox"> Remember Me
                 </label>
-                <a href="#">Forgot Password?</a>
             </div>
 
-            <button type="submit" class="login-btn">Login</button>
+            <button type="submit" name="login" class="login-btn">Login</button>
         </form>
 
     </div>
