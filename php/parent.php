@@ -12,7 +12,7 @@ header("Location: prnt_login.php");
 exit();
 }
 
-$email = $_SESSION['parent_email'];
+$email = trim($_SESSION['parent_email']);
 
 /* Admission Query */
 
@@ -30,7 +30,12 @@ WHERE email='$email'
 ORDER BY created_at DESC";
 
 $contact_result = $conn->query($contact_query);
+
+if(!$contact_result){
+die("Contact query error: " . $conn->error);
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,6 +87,10 @@ overflow:hidden;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
+th, td{
+text-align:center;
+vertical-align:middle;
+}
 th{
 background:#4a6cf7;
 color:white;
@@ -89,7 +98,7 @@ padding:12px;
 }
 
 td{
-padding:12px;
+padding:14px 18px;
 border-bottom:1px solid #eee;
 }
 
@@ -100,10 +109,15 @@ background:#f7f9ff;
 /* Status */
 
 .status{
-padding:5px 12px;
+display:inline-block;
+padding:8px 18px;
 border-radius:20px;
 color:white;
-font-size:12px;
+font-size:14px;
+font-weight:600;
+text-align:center;
+min-width:90px;
+margin:auto;
 }
 
 .pending{
@@ -173,6 +187,9 @@ white-space:nowrap;
 			</nav>
 		</div>
 	</header>
+	<?php
+	echo "<h3>Welcome ".$email."</h3>";
+	?>
 		<div class="container">
 
 <h2>Your Child Admission Status</h2>
@@ -187,7 +204,7 @@ white-space:nowrap;
 </tr>
 
 <?php
-if($contact_result && $contact_result->num_rows > 0){
+if($admission_result && $admission_result->num_rows > 0){
 
 while($row = $admission_result->fetch_assoc()){
 
@@ -212,7 +229,6 @@ echo "</tr>";
 echo "<tr><td colspan='4'>No admission records found</td></tr>";
 
 }
-
 ?>
 
 </table>
@@ -231,7 +247,7 @@ echo "<tr><td colspan='4'>No admission records found</td></tr>";
 
 <?php
 
-if($contact_result->num_rows > 0){
+if($contact_result && $contact_result->num_rows > 0){
 
 while($row = $contact_result->fetch_assoc()){
 
@@ -242,7 +258,7 @@ echo "<td>".htmlspecialchars($row['message'])."</td>";
 if(!empty($row['reply'])){
 echo "<td>".htmlspecialchars($row['reply'])."</td>";
 }else{
-echo "<td>No reply yet</td>";
+echo "<td style='color:gray;'>No reply yet</td>";
 }
 
 echo "<td>".htmlspecialchars($row['created_at'])."</td>";

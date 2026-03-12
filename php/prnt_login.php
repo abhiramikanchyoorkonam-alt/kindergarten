@@ -3,27 +3,21 @@ session_start();
 
 $conn = new mysqli("localhost","root","","happybuds");
 
-if(isset($_SESSION['parent_email'])){
-header("Location: parent.php");
-exit();
-}
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
+if($conn->connect_error){
+die("Connection failed: ".$conn->connect_error);
 }
 
 if(isset($_POST['login'])){
 
-$email = $_POST['email'];
+$email = trim($_POST['email']);
 $password = $_POST['password'];
 
-/* Check common password */
-
-if($password == "1234"){
+if($password == "123"){   // common password
 
 $sql = "SELECT * FROM admission WHERE email='$email'";
 $result = $conn->query($sql);
 
-if($result->num_rows > 0){
+if($result && $result->num_rows > 0){
 
 $_SESSION['parent_email'] = $email;
 
@@ -44,6 +38,7 @@ echo "<script>alert('Incorrect password');</script>";
 
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
