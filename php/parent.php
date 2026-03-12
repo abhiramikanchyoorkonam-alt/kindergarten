@@ -1,3 +1,36 @@
+<?php
+session_start();
+
+$conn = new mysqli("localhost","root","","happybuds");
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if(!isset($_SESSION['parent_email'])){
+header("Location: prnt_login.php");
+exit();
+}
+
+$email = $_SESSION['parent_email'];
+
+/* Admission Query */
+
+$admission_query = "SELECT child_name, program, status, submission_date 
+FROM admission 
+WHERE email='$email'";
+
+$admission_result = $conn->query($admission_query);
+
+/* Contact Query */
+
+$contact_query = "SELECT message, reply, created_at 
+FROM contacts 
+WHERE email='$email'
+ORDER BY created_at DESC";
+
+$contact_result = $conn->query($contact_query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +39,115 @@
 	<title>Parent — HappyBuds</title>
 	<link rel="stylesheet" href="stylesheet.css">
 </head>
+<style>
+	header{
+background:#4a6cf7;
+color:white;
+padding:15px;
+text-align:center;
+}
+
+.container{
+width:90%;
+margin:30px auto;
+}
+
+/* Cards */
+
+.cards{
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+margin-bottom:30px;
+}
+
+.card{
+background:white;
+flex:1;
+min-width:200px;
+padding:20px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+/* Tables */
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+th{
+background:#4a6cf7;
+color:white;
+padding:12px;
+}
+
+td{
+padding:12px;
+border-bottom:1px solid #eee;
+}
+
+tr:hover{
+background:#f7f9ff;
+}
+
+/* Status */
+
+.status{
+padding:5px 12px;
+border-radius:20px;
+color:white;
+font-size:12px;
+}
+
+.pending{
+background:orange;
+}
+
+.approved{
+background:green;
+}
+
+.rejected{
+background:red;
+}
+
+/* Logout button */
+
+.logout{
+float:right;
+margin-right:20px;
+background:#e74c3c;
+color:white;
+border:none;
+padding:8px 15px;
+border-radius:5px;
+cursor:pointer;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.cards{
+flex-direction:column;
+}
+
+table{
+display:block;
+overflow-x:auto;
+white-space:nowrap;
+}
+
+}
+
+</style>
 <body>
 	<header>
 		<div class="nav-bar">
@@ -25,36 +167,101 @@
 				<span></span>
 			</button>
 			<nav class="nav-items" id="nav-items">
-				<a href="about.php">About</a>
-				<a href="program.php">Program</a>
-				<a href="galary.php">Galary</a>
-				<a href="contact.php">Contact</a>
-				<a href="application.php"><button>Enroll</button></a>
-				<div class="login-dropdown">
-                <button class="login-btn-nav">Login ▾</button>
-                <div class="dropdown-content">
-                <a href="adm_login.php">Admin Login</a>
-                <a href="prnt_login.php">Parent Login</a>
-                </div>
-                </div>
 				<a href="logout.php">
 				<button style="background:#e74c3c;color:white;">Logout</button>
 				</a>
 			</nav>
 		</div>
 	</header>
+		<div class="container">
 
-	<main class="page-content">
-		<section class="hero">
-			<div class="hero-text">
-				<h2>For Parents</h2>
-				<p>Information and resources for families at HappyBuds.</p>
-			</div>
-			<div class="hero-img">
-				<img src="../log/logo_home.png" alt="logo">
-			</div>
-		</section>
-	</main>
+<h2>Your Child Admission Status</h2>
+
+<table>
+
+<tr>
+<th>Child Name</th>
+<th>Program</th>
+<th>Status</th>
+<th>Submitted On</th>
+</tr>
+
+<?php
+if($contact_result && $contact_result->num_rows > 0){
+
+while($row = $admission_result->fetch_assoc()){
+
+$status = strtolower($row['status']);
+
+echo "<tr>";
+
+echo "<td>".htmlspecialchars($row['child_name'])."</td>";
+
+echo "<td>".htmlspecialchars($row['program'])."</td>";
+
+echo "<td class='status $status'>".htmlspecialchars($row['status'])."</td>";
+
+echo "<td>".htmlspecialchars($row['submission_date'])."</td>";
+
+echo "</tr>";
+
+}
+
+}else{
+
+echo "<tr><td colspan='4'>No admission records found</td></tr>";
+
+}
+
+?>
+
+</table>
+
+<br><br>
+
+<h2>Your Enquiries & Admin Replies</h2>
+
+<table>
+
+<tr>
+<th>Your Message</th>
+<th>Admin Reply</th>
+<th>Date</th>
+</tr>
+
+<?php
+
+if($contact_result->num_rows > 0){
+
+while($row = $contact_result->fetch_assoc()){
+
+echo "<tr>";
+
+echo "<td>".htmlspecialchars($row['message'])."</td>";
+
+if(!empty($row['reply'])){
+echo "<td>".htmlspecialchars($row['reply'])."</td>";
+}else{
+echo "<td>No reply yet</td>";
+}
+
+echo "<td>".htmlspecialchars($row['created_at'])."</td>";
+
+echo "</tr>";
+
+}
+
+}else{
+
+echo "<tr><td colspan='3'>No messages found</td></tr>";
+
+}
+
+?>
+
+</table>
+
+</div>
 
 	<footer class="footer">
 		<div class="footer-container">

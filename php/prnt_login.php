@@ -1,41 +1,48 @@
 <?php
 session_start();
-$conn = new mysqli("localhost", "root", "", "happybuds");
 
+$conn = new mysqli("localhost","root","","happybuds");
+
+if(isset($_SESSION['parent_email'])){
+header("Location: parent.php");
+exit();
+}
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+die("Connection failed: " . $conn->connect_error);
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if(isset($_POST['login'])){
 
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+$email = $_POST['email'];
+$password = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT id, password FROM parent_users WHERE email=?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $stmt->store_result();
+/* Check common password */
 
-    if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id, $hashed_password);
-        $stmt->fetch();
+if($password == "1234"){
 
-        if (password_verify($password, $hashed_password)) {
-            $_SESSION['parent_id'] = $id;
-            $_SESSION['parent_email'] = $email;
+$sql = "SELECT * FROM admission WHERE email='$email'";
+$result = $conn->query($sql);
 
-            header("Location: parent_dashboard.php");
-            exit();
-        } else {
-            $error = "Invalid Password!";
-        }
-    } else {
-        $error = "Email not found!";
-    }
+if($result->num_rows > 0){
 
-    $stmt->close();
+$_SESSION['parent_email'] = $email;
+
+header("Location: parent.php");
+exit();
+
+}else{
+
+echo "<script>alert('Email not found in admission records');</script>";
+
 }
-$conn->close();
+
+}else{
+
+echo "<script>alert('Incorrect password');</script>";
+
+}
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -86,26 +93,28 @@ $conn->close();
         <h2>Parent Login</h2>
         <p>Access your child’s dashboard</p>
 
-        <form action="parent.php" method="post">
-            <div class="input-group">
-                <label>Email</label>
-                <input type="email" placeholder="Enter your email" required>
-            </div>
+       <form method="POST">
 
-            <div class="input-group">
-                <label>Password</label>
-                <input type="password" placeholder="Enter your password" required>
-            </div>
+<div class="input-group">
+<label>Email</label>
+<input type="email" name="email" placeholder="Enter your email" required>
+</div>
 
-            <div class="login-options">
-                <label>
-                    <input type="checkbox"> Remember Me
-                </label>
-                <a href="#">Forgot Password?</a>
-            </div>
+<div class="input-group">
+<label>Password</label>
+<input type="password" name="password" placeholder="Enter your password" required>
+</div>
 
-            <button type="submit" class="login-btn">Login</button>
-        </form>
+<div class="login-options">
+<label>
+<input type="checkbox"> Remember Me
+</label>
+<a href="#">Forgot Password?</a>
+</div>
+
+<button type="submit" name="login" class="login-btn">Login</button>
+
+</form>
 
     </div>
 </section>

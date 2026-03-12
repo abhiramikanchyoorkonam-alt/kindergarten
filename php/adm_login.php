@@ -11,34 +11,30 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $user = $_POST['username'];
-    $pass = $_POST['password'];
+if(isset($_POST['login'])){
 
-    $stmt = $conn->prepare("SELECT id, password FROM admin_users WHERE username=?");
-    $stmt->bind_param("s", $user);
-    $stmt->execute();
-    $stmt->store_result();
+$email = $_POST['email'];
+$password = $_POST['password'];
 
-    if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id, $hashed_password);
-        $stmt->fetch();
+/* check admin in database */
 
-        if (password_verify($pass, $hashed_password)) {
-            $_SESSION['admin_id'] = $id;
-            $_SESSION['admin_user'] = $user;
-            header("Location: admin_dashboard.php");
-            exit();
-        } else {
-            $error = "Invalid password!";
-        }
-    } else {
-        $error = "Username not found!";
-    }
+$sql = "SELECT * FROM admin WHERE email='$email' AND password='$password'";
+$result = $conn->query($sql);
 
-    $stmt->close();
+if($result && $result->num_rows == 1){
+
+$_SESSION['admin_email'] = $email;
+
+header("Location: admin_dashboard.php");
+exit();
+
+}else{
+
+echo "<script>alert('Invalid email or password');</script>";
+
 }
-$conn->close();
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

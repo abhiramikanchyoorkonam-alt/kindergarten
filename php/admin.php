@@ -1,8 +1,15 @@
 <?php
+
 $conn = new mysqli("localhost","root","","happybuds");
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+}
+session_start();
+
+if(!isset($_SESSION['admin_email'])){
+header("Location: adm_login.php");
+exit();
 }
 $contact_query = "SELECT * FROM contacts ORDER BY created_at DESC";
 $contact_result = $conn->query($contact_query);
