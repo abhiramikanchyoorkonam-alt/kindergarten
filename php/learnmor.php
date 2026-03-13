@@ -110,8 +110,8 @@
     <h1>Give your Child A Better Life</h1>
     <p>Give your child the best start in life with HappyBuds Kindergarten!</p>
     <div class="quick-adm-button">
-    <a href="application.html"><button>Apply for Admission</button></a>
-    <a href="contact.html"><button>Contact Us</button></a></div>
+    <a href="application.php"><button>Apply for Admission</button></a>
+    <a href="contact.php"><button>Contact Us</button></a></div>
  </div>
     <div id="programDetails" class="program-details">
         <span class="close-btn" onclick="closeProgram()">✖</span>
