@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-$servername = "localhost";
-$dbusername = "root";
-$dbpassword = "";
-$dbname = "happybuds";
+$servername = "sql300.infinityfree.com";
+$dbusername = "if0_41292570";
+$dbpassword = "WtMNYf4eoUr4qr";
+$dbname = "if0_41292570_happybuds";
 
 $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 if ($conn->connect_error) {

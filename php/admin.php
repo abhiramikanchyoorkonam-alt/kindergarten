@@ -1,6 +1,9 @@
 <?php
 
-$conn = new mysqli("localhost","root","","happybuds");
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+$conn = new mysqli("sql300.infinityfree.com", "if0_41292570", "WtMNYf4eoUr4qr", "if0_41292570_happybuds");
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -11,7 +14,7 @@ if(!isset($_SESSION['admin_email'])){
 header("Location: adm_login.php");
 exit();
 }
-$contact_query = "SELECT * FROM contacts ORDER BY created_at DESC";
+$contact_query = "SELECT * FROM contacts";
 $contact_result = $conn->query($contact_query);
 $contact_query = "SELECT name, email, message, created_at FROM contacts ORDER BY created_at DESC";
 $contact_result = $conn->query($contact_query);
@@ -30,9 +33,6 @@ $active_parents = $row3['total'];
 
 $teachers_present = 5;
 
-
-
-$conn = new mysqli("localhost","root","","happybuds");
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$conn = new mysqli("localhost","root","","happybuds");
+$conn = new mysqli("sql300.infinityfree.com", "if0_41292570", "WtMNYf4eoUr4qr", "if0_41292570_happybuds");
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
