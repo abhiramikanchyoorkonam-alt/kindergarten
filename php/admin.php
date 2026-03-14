@@ -1,19 +1,39 @@
-<?php
+<?php 
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-$conn = new mysqli("sql300.infinityfree.com", "if0_41292570", "WtMNYf4eoUr4qr", "if0_41292570_happybuds");
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 session_start();
 
 if(!isset($_SESSION['admin_email'])){
-header("Location: adm_login.php");
-exit();
+    header("Location: adm_login.php");
+    exit();
 }
+
+$conn = new mysqli(
+"sql300.infinityfree.com",
+"if0_41292570",
+"WtMNYf4eoUr4qr",
+"if0_41292570_happybuds"
+);
+
+if($conn->connect_error){
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if(isset($_GET['id']) && isset($_GET['status'])){
+
+    $id = $_GET['id'];
+    $status = $_GET['status'];
+
+    $stmt = $conn->prepare("UPDATE admission SET status=? WHERE id=?");
+    $stmt->bind_param("si",$status,$id);
+    $stmt->execute();
+
+    header("Location: admin.php");
+    exit();
+
+}else{
+    echo "Invalid request";
+}
+
 $contact_query = "SELECT * FROM contacts";
 $contact_result = $conn->query($contact_query);
 $contact_query = "SELECT name, email, message, created_at FROM contacts ORDER BY created_at DESC";
