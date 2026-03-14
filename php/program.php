@@ -25,9 +25,9 @@
                 <span></span>
             </button>
             <nav class="nav-items" id="nav-items">
-                 <a href="about.html">About</a>
-                <a href="program.html">Program</a>
-                <a href="galary.php">Galary</a>
+                 <a href="about.php">About</a>
+                <a href="program.php">Program</a>
+                <a href="gallery.php">Gallery</a>
                 <a href="contact.php">Contact</a>
                 <a href="application.php"><button>Enroll</button></a>
                 <div class="login-dropdown">
